@@ -1,2 +1,7 @@
-# Honours-Project
-A space to hold my 4th year honours project
+My 4th year honours project
+
+index page - 
+login credentials - 
+example outcomes - 
+description of use - 
+
