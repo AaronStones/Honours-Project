@@ -19,7 +19,7 @@ body{
 } 
 
 .search-text .btn-search{
-    background: #da3e44;
+    background: #53BA6B;
     font-family:Roboto;
     border:none;
 	color:#FFF;
@@ -42,7 +42,9 @@ footer{
     font-weight:700;
     font-size:30px;
 }
-
+img {
+    height: 200px;
+}
 .address span , .menu span{
    color: #FFF; 
    font-weight: bold; 
@@ -67,7 +69,7 @@ footer{
 }
 
 .address li a:hover , .menu li a:hover{
-    color: #da3e44;
+    color: #53BA6B;
     -webkit-transition: all 1s ease-in-out;
     -moz-transition: all 1s ease-in-out;
     -o-transition: all 1s ease-in-out;
@@ -75,7 +77,7 @@ footer{
 }
 
 .address .fa{
-    color: #da3e44;
+    color: #53BA6B;
     margin-right: 10px;
     font-size:18px;
 }

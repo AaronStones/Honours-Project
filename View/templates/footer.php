@@ -1,83 +1,66 @@
-<!-- Footer -->
-<footer class="page-footer font-small blue pt-4">
+<link rel="stylesheet" type="text/css" href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/View/css/footer.css">
+<div class="search-text"> 
+   <div class="container">
+     <div class="row text-center">
+     
+       <div class="form">
+           <h4>SIGN UP TO OUR NEWSLETTER</h4>
+            <form id="search-form" class="form-search form-horizontal">
+                <input type="text" class="input-search" placeholder="Email Address">
+                <button type="submit" class="btn-search">SUBMIT</button>
+            </form>
+        </div>
+    
+      </div>         
+   </div>     
+</div>
 
-  <!-- Footer Links -->
-  <div class="container-fluid text-center text-md-left">
-
-    <!-- Grid row -->
-    <div class="row">
-
-      <!-- Grid column -->
-      <div class="col-md-6 mt-md-0 mt-3">
-
-        <!-- Content -->
-        <h5 class="text-uppercase">Footer Content</h5>
-        <p>Here you can use rows and columns to organize your footer content.</p>
-
-      </div>
-      <!-- Grid column -->
-
-      <hr class="clearfix w-100 d-md-none pb-3">
-
-      <!-- Grid column -->
-      <div class="col-md-3 mb-md-0 mb-3">
-
-        <!-- Links -->
-        <h5 class="text-uppercase">Links</h5>
-
-        <ul class="list-unstyled">
-          <li>
-            <a href="#!">Link 1</a>
-          </li>
-          <li>
-            <a href="#!">Link 2</a>
-          </li>
-          <li>
-            <a href="#!">Link 3</a>
-          </li>
-          <li>
-            <a href="#!">Link 4</a>
-          </li>
-        </ul>
-
-      </div>
-      <!-- Grid column -->
-
-      <!-- Grid column -->
-      <div class="col-md-3 mb-md-0 mb-3">
-
-        <!-- Links -->
-        <h5 class="text-uppercase">Links</h5>
-
-        <ul class="list-unstyled">
-          <li>
-            <a href="#!">Link 1</a>
-          </li>
-          <li>
-            <a href="#!">Link 2</a>
-          </li>
-          <li>
-            <a href="#!">Link 3</a>
-          </li>
-          <li>
-            <a href="#!">Link 4</a>
-          </li>
-        </ul>
-
-      </div>
-      <!-- Grid column -->
-
+<footer>
+ <div class="container">
+   <div class="row">
+   
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <span class="logo">Elderly Helper</span>
+              <img src="https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.freepnglogos.com%2Fuploads%2Fs-letter-logo-png-15.png">
+            </div>
+            
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <ul class="menu">
+                     <span>Menu</span>    
+                     <li>
+                        <a href="#">Home</a>
+                      </li>
+                           
+                      <li>
+                         <a href="#">About</a>
+                      </li>
+                           
+                      <li>
+                        <a href="#">Contact Us</a>
+                      </li>
+                           
+                      <li>
+                         <a href="#">FAQs </a>
+                      </li>
+                 </ul>
+            </div>
+       
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <ul class="address">
+                <span>Contact</span>       
+                   <li>
+                       <i class="fa fa-phone" aria-hidden="true"></i> <a href="#">Phone</a>
+                   </li>
+                   <li>
+                       <i class="fa fa-map-marker" aria-hidden="true"></i> <a href="#">Address</a>
+                   </li> 
+                   <li>
+                      <i class="fa fa-envelope" aria-hidden="true"></i> <a href="#">Email</a>
+                   </li> 
+               </ul>
+           </div>
+       
+       
+       </div> 
     </div>
-    <!-- Grid row -->
-
-  </div>
-  <!-- Footer Links -->
-
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2018 Copyright:
-    <a href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
-  </div>
-  <!-- Copyright -->
-
 </footer>
-<!-- Footer -->

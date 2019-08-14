@@ -2,4 +2,4 @@ https://www.w3schools.com/bootstrap/
 https://mdbootstrap.com/docs/jquery/navigation/footer/
 
 
-Logo - https://logomakr.com/
+Logo - http://logok.org/wp-content/uploads/2015/05/GS-logo.png
