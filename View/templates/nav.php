@@ -1,4 +1,3 @@
-<link rel="stylesheet" type="text/css" href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/View/css/nav.css">
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">

@@ -14,24 +14,48 @@
                         <h3>Sign In</h3>
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form action="../controller/login.php" method="post">
                         <div style="margin-left: auto; margin-right: auto;" class="input-group form-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-user"></i></span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Username">
+                                <input type="text" name="email" class="form-control" placeholder="Username" required>
                                 
                             </div>
                             <div style="margin-left: auto; margin-right: auto;" class="input-group form-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-key"></i></span>
                                 </div>
-                                <input type="password" class="form-control" placeholder="Password">
+                                <input type="password" name="password" class="form-control" placeholder="Password" required>
                             </div>
                             <div class="form-group">
                                 <input type="submit" value="Login" class="btn float-right login_btn">
                             </div>
                         </form>
+                            <script>
+                            $('form').on('submit', function(e)
+                            {
+                                e.preventDefault(); // Prevent default form behaviour so we can override it
+
+                                $('#submit').prop('disabled', true); // Disable submit button to prevent multiple submissions
+
+                                $.post('../Controller/login.php', $('form').serialize(), function(data)
+                                {
+                                let response = '<div class="alert alert-' + (data.success ? 'success' : 'danger') + '">' + data.message + '</div>';
+                                $('#response').html(response); // Display response message
+
+                                if (data.success)
+                                {
+                                    location.href = 'index'; // Success, redirect to home page
+                                }
+                                else
+                                {
+                                    // Failure, enable submit button to allow resubmission
+                                    $('#submit').prop('disabled', false);
+                                }
+                                }, 'json');
+                            });
+                            </script>
                     </div>
                     <div class="card-footer">
                         <div class="d-flex justify-content-center links">
@@ -44,7 +68,6 @@
                 </div>
             </div>
         </div>
-
         <?php include("templates/footer.php"); ?>
     </body>
 </html>
