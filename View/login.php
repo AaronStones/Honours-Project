@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php
+ini_set("display_errors", 1);
+error_reporting(E_ALL);
+?>
 <html lang="en">
 <head>
     <?php include("templates/header.php"); ?>
@@ -8,17 +12,18 @@
         <?php include("templates/nav.php"); ?>
 
         <div style="margin-top: 100px;" class="container">
+        <div id="response"></div> <!-- Response will go here -->
             <div class="d-flex justify-content-center h-100">
                 <div class="card">
                     <div class="card-header">
                         <h3>Sign In</h3>
                     </div>
                     <div class="card-body">
-                        <form action="../controller/login.php" method="post">
+                        <form action="post" action="../Controller/login.php">
                         <div style="margin-left: auto; margin-right: auto;" class="input-group form-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                </div>
+                                </div>  
                                 <input type="text" name="email" class="form-control" placeholder="Username" required>
                                 
                             </div>
@@ -29,33 +34,9 @@
                                 <input type="password" name="password" class="form-control" placeholder="Password" required>
                             </div>
                             <div class="form-group">
-                                <input type="submit" value="Login" class="btn float-right login_btn">
+                                <input type="submit" placeholder="Login" class="btn float-right login_btn">
                             </div>
                         </form>
-                            <script>
-                            $('form').on('submit', function(e)
-                            {
-                                e.preventDefault(); // Prevent default form behaviour so we can override it
-
-                                $('#submit').prop('disabled', true); // Disable submit button to prevent multiple submissions
-
-                                $.post('../Controller/login.php', $('form').serialize(), function(data)
-                                {
-                                let response = '<div class="alert alert-' + (data.success ? 'success' : 'danger') + '">' + data.message + '</div>';
-                                $('#response').html(response); // Display response message
-
-                                if (data.success)
-                                {
-                                    location.href = 'index'; // Success, redirect to home page
-                                }
-                                else
-                                {
-                                    // Failure, enable submit button to allow resubmission
-                                    $('#submit').prop('disabled', false);
-                                }
-                                }, 'json');
-                            });
-                            </script>
                     </div>
                     <div class="card-footer">
                         <div class="d-flex justify-content-center links">
@@ -69,5 +50,29 @@
             </div>
         </div>
         <?php include("templates/footer.php"); ?>
+        <script>
+        $('form').on('submit', function(e)
+            {
+                e.preventDefault(); // Prevent default form behaviour so we can override it
+
+                $('#submit').prop('disabled', true); // Disable submit button to prevent multiple submissions
+
+                $.post('../Controller/login.php', $('form').serialize(), function(data)
+                {
+                let response = '<div class="alert alert-' + (data.success ? 'success' : 'danger') + '">' + data.message + '</div>';
+                $('#response').html(response); // Display response message
+
+                if (data.success)
+                {
+                    location.href = 'index'; // Success, redirect to home page
+                }
+                else
+                {
+                    // Failure, enable submit button to allow resubmission
+                    $('#submit').prop('disabled', false);
+                }
+                }, 'json');
+            });
+        </script>
     </body>
 </html>
