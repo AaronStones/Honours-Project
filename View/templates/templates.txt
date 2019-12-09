@@ -1,1 +1,0 @@
-A file that will hold the templates for the website
