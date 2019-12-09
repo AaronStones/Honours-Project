@@ -1,0 +1,23 @@
+.header{
+    text-align: center;
+    background-color: #33383C;
+    color: white;
+    margin-bottom: 50px;
+    margin-top: -30px;
+}
+.header h1 {
+    color: white;
+    padding-top: 50px;
+}
+.header h3 {
+    padding-bottom: 50px;
+}
+
+.header h1:hover {
+    color: #C1C1C1;
+    text-decoration: none;
+}
+a, u {
+    text-decoration: none !important;
+    color: white;
+}
