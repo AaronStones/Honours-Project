@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/View/css/footer.css">
+<link rel="stylesheet" type="text/css" href="css/footer.css">
 <div class="search-text"> 
    <div class="container">
      <div class="row text-center">

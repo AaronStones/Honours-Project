@@ -45,7 +45,8 @@ function LoginM($email, $pass){
         if (password_verify($pass, $password) != false){
             return json_encode(array(
                 'email' => $email,
-                'name' => $name));
+                'name' => $name,
+                'password' => $password));
         }
         else {
             return "Incorrect credentials, please try again";

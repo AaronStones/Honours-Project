@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/View/css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
     <?php include("templates/header.php"); ?>
 </head>
     <body>
