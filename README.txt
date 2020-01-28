@@ -1,4 +1,4 @@
-Link to Web App - https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/View/index.php
+Link to Web App - https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/View/index
 
 for system diagram use - https://www.draw.io/
 
