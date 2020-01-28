@@ -1,11 +1,9 @@
-<?php
-
-ini_set("display_errors", 1);
-error_reporting(E_ALL);
-include("templates/header.php");
-$page = "Register";
-$title = "Movie Recommender - Register"; 
-?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <?php include("templates/header.php"); ?>
+</head>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,9 +33,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //get user data
 
   include("../Controller/registerMedical.php");
   
-  $email_form = $_POST['email']; // required
-  $last_name = $_POST['password']; // required
-
   $login = registerUsersM( $_POST['email'], $_POST['password']);
 
   if ($login == null){
@@ -51,6 +46,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //get user data
 }
 ?>
 
-<!-- End of AJAX script -->
-</body>
+<?php include("templates/footer.php"); ?>
+    </body>
 </html>
