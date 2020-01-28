@@ -6,13 +6,13 @@
     // Validation
     if (!preg_match('/^(?=.{5,80}$)[\S]+@[\S]+\.[\S]+$/', $from)) // Validate email
     {
-        header("location: ../view/error");
+        header("location: ../View/error");
         exit;
     }
 
     if (!preg_match('/^.{1,1200}$/', $message)) // Validate message
     {
-        header("location: ../view/error");
+        header("location: ../View/error");
         exit;
     }
 
@@ -25,6 +25,6 @@
     // Send email to sender to confirm that the message was sent
     $fullMessage = wordwrap("You sent the following message to the Elderly Helper team under the subject \"$subject\":\n\n$message");
     mail($from, 'Thank you for your feedback', $fullMessage);
-
-    header("location: ../view/support");
+    echo "<h4>Thank you for your response, a member of our team will be in touch soon.</h4>";
+    header("location: ../View/messageSent");
 ?>
