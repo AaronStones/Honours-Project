@@ -25,6 +25,5 @@
     // Send email to sender to confirm that the message was sent
     $fullMessage = wordwrap("You sent the following message to the Elderly Helper team under the subject \"$subject\":\n\n$message");
     mail($from, 'Thank you for your feedback', $fullMessage);
-    echo "<h4>Thank you for your response, a member of our team will be in touch soon.</h4>";
     header("location: ../View/messageSent");
 ?>
