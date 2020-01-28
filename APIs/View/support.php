@@ -14,39 +14,42 @@
         <div class="col-md-6 col-sm-12">
             <h2>Frequently Asked Questions</h2>
 
-            <h6>Lorem ipsum sit dolar amet?</h6>
+            <h6>How will my data be stored?</h6>
             <p class="small">
-            Nulla quis consectetur augue. Cras eget augue eget ipsum dictum hendrerit
-            non vel mauris. Duis lacinia egestas porttitor. Aliquam eleifend enim sem,
-            quis facilisis ipsum faucibus a. In non semper dui, eget consectetur eros.
+            Your data will be securely stored in the university's MySQL database on the 
+            Mayar server.
             </p>
 
-            <h6>Nullam vehicula arcu eu pulvinar sodales. Donec commodo dictum magna?</h6>
+            <h6>Does this application ue 'real life' data/results?</h6>
             <p class="small">
-            Aliquam et maximus nisl. Morbi sollicitudin fermentum eros, quis mollis
-            elit. Donec semper mattis purus, lobortis ultrices felis. Donec ut viverra
-            nisl. Duis maximus et nisi gravida malesuada. Vestibulum elementum augue ut
-            rutrum egestas.
+            No all data/reuslts are fabricated or taken from willing volunteersto prove the 
+            concept works. No patient data is ever used. 
             </p>
 
-            <h6>Aliquam et maximus nisl. Morbi sollicitudin fermentum eros, quis mollis elit?</h6>
+            <h6>Where is this project being developed?</h6>
             <p class="small">
-            Pellentesque finibus vel nisi non pulvinar. Nullam eu nunc vitae libero
-            eleifend gravida. Suspendisse ullamcorper pharetra elit eget rhoncus. Nullam
-            vel scelerisque diam. Curabitur sit amet lorem sem. Nunc dictum turpis eget
-            dapibus porttitor.
+            This project is being developed within the Univeristy of Abertay Dundee's campus.
             </p>
 
-            <h6>In sed tellus in neque imperdiet eleifend ac non eros?</h6>
+            <h6>What technologies does the project utilise?</h6>
             <p class="small">
-            Vestibulum in orci malesuada lacus sodales lacinia. Suspendisse potenti.
-            Phasellus enim tortor, tincidunt ornare tortor in, finibus feugiat libero.
-            Integer tellus risus, ultrices eu ipsum ut, auctor laoreet metus.
+            To develop this website the technologies used are the LAMP (or Linux Apache MySQL and PHP)
+            stack with HTML, CSS and JavaScript to suppliment the website. 
+            </p>
+            <h6>What else is being developed to couple with this website?</h6>
+            <p class="small">
+            A mobile device to test patients Parkinson's/Dementia state and an IoT device to read a subject's
+            vital signs. 
+            </p>
+            <h6>My question isn't answered here what should I do?</h6>
+            <p class="small">
+            Please fill out the form on this page and it will send an email to a member of the development team
+            who will answer your query in no time.
             </p>
         </div>
         <div class="col-md-6 col-sm-12">
             <h2>Contact Us</h2>
-            <form action="../controller/contact.php" method="POST">
+            <form action="../Controller/contact.php" method="POST">
                 <label for="subject">Subject</label>
                 <select class="form-control" name="subject">
                     <option value="Feedback">Feedback</option>
