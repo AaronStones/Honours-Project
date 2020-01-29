@@ -2,16 +2,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<?php
-include("templates/header.php");
-
-?>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <?php include("templates/header.php"); ?>
 </head>
-<link rel="stylesheet" type="text/css" href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/View/css/login.css">
+    <body>
 
 <!-- Start of page content -->
 
-<div class="container my-3" role="main">
+<div class="container my-3">
   <h1>Login</h1>
   <p>Please enter your details on this page to login to your account or <a class="link" href="signup">register as a new user</a> if you do not already have an account.</p>
   <hr>
@@ -24,7 +22,7 @@ include("templates/header.php");
     <label for="password">Password</label>
     <input class="form-control" type="password" placeholder="Enter Password" name="password" required>
 
-    <button type="submit" class="form-control btn btn-danger mt-3">Login</button>
+    <button type="submit" class="form-control btn btn-success mt-3">Login</button>
   </form>
   <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") { //get user data

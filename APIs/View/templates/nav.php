@@ -9,12 +9,11 @@
         <ul class="dropdown-menu">
           <li><a href="account">Account</a></li>
           <li><a href="aboutus">About Us</a></li>
-          <li><a href="faqs">FAQs</a></li>
-          <li><a href="contactus">Contact us</a></li>
+          <li><a href="support">FAQs</a></li>
+          <li><a href="support">Contact us</a></li>
 
         </ul>
       </li>
-      <li><a href="#">Main Application Content</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>

@@ -1,3 +1,4 @@
+<footer>
 <link rel="stylesheet" type="text/css" href="css/footer.css">
 <div class="search-text"> 
    <div class="container">
@@ -15,7 +16,6 @@
    </div>     
 </div>
 
-<footer>
  <div class="container">
    <div class="row">
    
@@ -28,19 +28,19 @@
                 <ul class="menu">
                      <span>Menu</span>    
                      <li>
-                        <a href="#">Home</a>
+                        <a href="index">Home</a>
                       </li>
                            
                       <li>
-                         <a href="#">About</a>
+                         <a href="aboutus">About</a>
                       </li>
                            
                       <li>
-                        <a href="#">Contact Us</a>
+                        <a href="support">Contact Us</a>
                       </li>
                            
                       <li>
-                         <a href="#">FAQs </a>
+                         <a href="support">FAQs </a>
                       </li>
                  </ul>
             </div>

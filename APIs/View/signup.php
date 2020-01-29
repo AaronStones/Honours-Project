@@ -4,11 +4,7 @@
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <?php include("templates/header.php"); ?>
 </head>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-</head>
-<body>
+    <body>
 <!-- Start of page content -->
 
 <div class="container my-3" role="main">
@@ -23,7 +19,7 @@
     <input class="form-control" type="password" placeholder="Enter Password" pattern="^(?=.*\d)(?=.*[a-zA-Z]).{8,80}$" title="Please ensure the password is 8 characters and contains at least one letter and one number." name="password" required>
     <label for="confirm">Confirm Password</label>
     <input class="form-control" type="password" placeholder="Confirm Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,80}$" title="Please ensure the password is 8 characters and contains at least one letter and one number." name="confirm" required>
-    <button id="submit" type="submit" class="form-control btn btn-danger mt-3">Register</button>
+    <button id="submit" type="submit" class="form-control btn btn-success mt-3">Register</button>
   </form>
 </div>
 
