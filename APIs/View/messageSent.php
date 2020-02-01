@@ -7,7 +7,6 @@
     <body>
         <?php include("templates/nav.php"); ?>
 <!-- Start of page content -->
-<!-- Start of page content -->
 
 <div class="container d-flex h-100 w-100" role="main">
 	<div class="row align-items-center h-100 w-100">
