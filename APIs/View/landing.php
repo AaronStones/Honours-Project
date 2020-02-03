@@ -8,15 +8,15 @@ if (isset($_SESSION['userData']) == false){
 
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/View/css/index.css">
+    <link rel="stylesheet" type="text/css" href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/View/css/index.css">
     <?php include("templates/header.php"); ?>
 </head>
     <body>
         <?php include("templates/nav.php"); ?>
 
             <div class="header">
-                <a href="index"><h1>Honours Project</h1></a>
-                <h3><a href="results">View Patient Results</a> | <a href="advice">Give Advice to Patients</a> | <a href="messenger">Patient Chats</a></h3>
+                <a href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/View/index"><h1>Honours Project</h1></a>
+                <h3><a href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/View/results">View Patient Results</a> | <a href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/View/advice">Give Advice to Patients</a> | <a href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/View/messenger">Patient Chats</a></h3>
             </div>
             
 

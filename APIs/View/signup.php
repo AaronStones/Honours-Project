@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/View/css/index.css">
     <?php include("templates/header.php"); ?>
 </head>
     <body>
@@ -9,7 +9,7 @@
 
 <div class="container my-3" role="main">
   <h1>Register</h1>
-  <p>Please fill in this form to register a new account or <a class="link" href="login">login as an existing user</a> if you already have an account.</p>
+  <p>Please fill in this form to register a new account or <a class="link" href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/View/login">login as an existing user</a> if you already have an account.</p>
   <hr>
   <div id="response"></div> <!-- Response will go here -->
   <form method = "post">

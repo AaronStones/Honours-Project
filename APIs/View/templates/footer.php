@@ -1,5 +1,5 @@
 <footer>
-<link rel="stylesheet" type="text/css" href="css/footer.css">
+<link rel="stylesheet" type="text/css" href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/View/css/footer.css">
 <div class="search-text"> 
    <div class="container">
      <div class="row text-center">
@@ -28,19 +28,19 @@
                 <ul class="menu">
                      <span>Menu</span>    
                      <li>
-                        <a href="index">Home</a>
+                        <a href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/View/index">Home</a>
                       </li>
                            
                       <li>
-                         <a href="aboutus">About</a>
+                         <a href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/View/aboutus">About</a>
                       </li>
                            
                       <li>
-                        <a href="support">Contact Us</a>
+                        <a href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/View/support">Contact Us</a>
                       </li>
                            
                       <li>
-                         <a href="support">FAQs </a>
+                         <a href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/View/support">FAQs </a>
                       </li>
                  </ul>
             </div>

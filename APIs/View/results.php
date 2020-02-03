@@ -7,15 +7,15 @@ if (isset($_SESSION['userData']) == false){
 ?>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/View/css/index.css">
+    <link rel="stylesheet" type="text/css" href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/View/css/index">
     <?php include("templates/header.php"); ?>
 </head>
     <body>
         <?php include("templates/nav.php"); ?>
 
             <div class="header">
-                <a href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/View/index"><h1>Patient Results</h1></a>
-                <h3><a href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/View/landing.php">Home</a> | <a href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/View/advice.php" >Give Advice to Patients</a> | <a href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/View/messenger">Patient Chats</a></h3>
+                <a href="index"><h1>Patient Results</h1></a>
+                <h3><a href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/View/landing">Home</a> | <a href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/View/advice" >Give Advice to Patients</a> | <a href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/View/messenger">Patient Chats</a></h3>
             </div>
             <h4>Select a patient to view their results</h4>
             <form method="post">
@@ -41,24 +41,13 @@ if (isset($_SESSION['userData']) == false){
                 else {
                     for ($i=0; $i<sizeof($results);$i++){
                         echo $results[$i]->result . "  " . $results[$i]->time . "</br>";
+                        $dataPoints = array(
+                            array("y" => $results[$i]->result, "label" => $results[$i]->time)
+                        );
                     }
                 }
             }
 
-            ?>
-
-            <?php
-            
-            $dataPoints = array(
-                array("y" => 25, "label" => "Sunday"),
-                array("y" => 15, "label" => "Monday"),
-                array("y" => 25, "label" => "Tuesday"),
-                array("y" => 5, "label" => "Wednesday"),
-                array("y" => 10, "label" => "Thursday"),
-                array("y" => 0, "label" => "Friday"),
-                array("y" => 20, "label" => "Saturday")
-            );
-            
             ?>
 
             <script>
@@ -66,10 +55,10 @@ if (isset($_SESSION['userData']) == false){
             
             var chart = new CanvasJS.Chart("chartContainer", {
                 title: {
-                    text: "Push-ups Over a Week"
+                    text: "Hand Shake test Results"
                 },
                 axisY: {
-                    title: "Number of Push-ups"
+                    title: "Number of registered shakes"
                 },
                 data: [{
                     type: "line",

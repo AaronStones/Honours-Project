@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/View/css/index.css">
     <?php include("templates/header.php"); ?>
 </head>
     <body>
@@ -11,7 +11,7 @@
 
 <div class="container my-3">
   <h1>Login</h1>
-  <p>Please enter your details on this page to login to your account or <a class="link" href="signup">register as a new user</a> if you do not already have an account.</p>
+  <p>Please enter your details on this page to login to your account or <a class="link" href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/View/signup">register as a new user</a> if you do not already have an account.</p>
   <hr>
   <div id="response"></div> <!-- Response will go here -->
   <form method="post">
