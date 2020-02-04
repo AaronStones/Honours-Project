@@ -26,7 +26,7 @@ $Details = json_decode($_SESSION['userData']);
             <input name="password" class="form-control" type="password" placeholder="Enter Password" required pattern="^(?=.*\d)(?=.*[a-zA-Z]).{8,80}$" title="Please ensure the password is 8 characters and contains at least one letter and one number.">
             <label for="newEmail">New Email</label>
             <input name="newEmail" class="form-control" type="text" placeholder="Enter Email" required pattern="^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$" title="Please ensure the email address is valid.">
-            <button id="submitChangeEmail" type="submit" class="form-control btn btn-danger mt-3">Change Account Email</button>
+            <button id="submitChangeEmail" type="submit" class="form-control btn btn-success mt-3">Change Account Email</button>
         </form>
 
         <h2 class="mt-5">Change Password</h2>
@@ -38,7 +38,7 @@ $Details = json_decode($_SESSION['userData']);
             <input name="newPassword" class="form-control" type="password" placeholder="Enter New Password" required pattern="^(?=.*\d)(?=.*[a-zA-Z]).{8,80}$" title="Please ensure the password is 8 characters and contains at least one letter and one number.">
             <label for="newConfirm">Confirm New Password</label>
             <input name="newConfirm" class="form-control" type="password" placeholder="Confirm New Password" required pattern="^(?=.*\d)(?=.*[a-zA-Z]).{8,80}$" title="Please ensure the password is 8 characters and contains at least one letter and one number.">
-            <button id="submitChangePassword" type="submit" class="form-control btn btn-danger mt-3">Change Account Password</button>
+            <button id="submitChangePassword" type="submit" class="form-control btn btn-success mt-3">Change Account Password</button>
         </form>
 
         <h2 class="mt-5">Change Name</h2>
@@ -46,7 +46,7 @@ $Details = json_decode($_SESSION['userData']);
         <form id="formChangePassword" method="post">
             <label for="password">New Name</label>
             <input name="name" class="form-control" type="text" placeholder="Enter Name">
-            <button id="submitChangePassword" type="submit" class="form-control btn btn-danger mt-3">Change Account Name</button>
+            <button id="submitChangePassword" type="submit" class="form-control btn btn-success mt-3">Change Account Name</button>
         </form>
 
         </div>

@@ -27,7 +27,7 @@ $name = $data->name;
 
                 <label for="email">Email</label>
             <input class="form-control" type="text" placeholder="Enter Email" title="Please ensure the email address is valid." name="email" required>   
-            <button id="submit" type="submit" class="form-control btn btn-danger mt-3">Select Patient</button>
+            <button id="submit" type="submit" class="form-control btn btn-success mt-3">Select Patient</button>
 
             </form>
             <?php
@@ -61,7 +61,7 @@ $name = $data->name;
 
                 <label for=email>Enter Message</label>
             <input class='form-control' type='text' placeholder='Enter Message' name='message' required>   
-            <button id='submit' type='submit' class='form-control btn btn-danger mt-3'>Send Message</button>
+            <button id='submit' type='submit' class='form-control btn btn-success mt-3'>Send Message</button>
 
             </form>
                 ";

@@ -7,7 +7,7 @@ if (isset($_SESSION['userData']) == false){
 ?>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/View/index.css">
+    <link rel="stylesheet" type="text/css" href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/View/css/index.css">
     <?php include("templates/header.php"); ?>
 </head>
     <body>
@@ -23,7 +23,7 @@ if (isset($_SESSION['userData']) == false){
 
                 <label for="email">Email</label>
             <input class="form-control" type="text" placeholder="Enter Email" title="Please ensure the email address is valid." name="email" required>   
-            <button id="submit" type="submit" class="form-control btn btn-danger mt-3">Select Patient</button>
+            <button id="submit" type="submit" class="form-control btn btn-success mt-3">Select Patient</button>
 
             </form>
             <?php
@@ -54,7 +54,7 @@ if (isset($_SESSION['userData']) == false){
                         <input class='form-control' type='text' placeholder='Enter Advice' name='advice' required>   
                         <input name=docName type=hidden value='" . $var->name . "'>
                         <input name=patientEmail type=hidden value='" . $email . "'>
-                        <button id='postMessage' type='submit' class='form-control btn btn-danger mt-3'>Send Advice</button>
+                        <button id='postMessage' type='submit' class='form-control btn btn-success mt-3'>Send Advice</button>
         
                         </form>
                     ";
