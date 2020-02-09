@@ -1,0 +1,29 @@
+https://www.zdnet.com/article/iot-and-the-nhs-why-the-internet-of-things-will-create-a-healthcare-revolution/
+https://www.sabp.nhs.uk/tihm/about
+https://www.england.nhs.uk/ourwork/innovation/test-beds/tihm/
+
+
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3510747/
+Other studies demonstrated the smartphone’s potential in patient monitoring. Shoes fitted with sensors that communicate 
+with the smartphone were used to follow the activity level of patients who have recently had a stroke [7]. 
+The smartphone’s accelerometer can be used to interpret gait and balance of patients [8-11]. Another study entailed 
+connecting a single-lead ECG to a smartphone to diagnose and follow treatment with sleep apnea [12], providing a possible 
+alternative to costly and labor-intensive polysomnography. One study used smartphones to promote physical activity by asking 
+participants to routinely log their results.
+
+The ability to automatically monitor patients with diabetic and heart conditions from their smartphones is being developed [16]. 
+This technology extends to other conditions such as movement disorders or bipolar disorder [17-19]. Additionally, engineers are 
+testing the smartphone to be used as a device for monitoring patients’ balance using the phone’s accelerometer [20].
+
+Several examples demonstrating the smartphone’s role in communication can be found in developing countries with scarce resources [45]. 
+In Africa, the amount of network coverage to send text messages with pictures ranges from 1.5% to 92.2% [46], providing an opportunity 
+to send pictures of physical findings to aid in telediagnosis. Pictures from phone cameras of Gram stains have been sent via text 
+messaged for remote diagnosis [47]. Video clips of limited echocardiographic studies were taken in remote Honduran villages sent via 
+iPhones to experts for interpretation [48]. This has been reproduced with lung ultrasound [49]. Engineers have created various microscopes 
+that attach to smartphones, providing a cost-effective and mobile way to bring more technology to poor and rural regions [50-52]. 
+Development of point-of-care apps for human immunodeficiency virus (HIV) infection treatment to support physicians with limited HIV training 
+in undeveloped regions is expected to minimize errors and improve outcomes [53].
+
+https://www.ft.com/content/1efb95ba-d852-11e6-944b-e7eb37a6aa8e
+https://www.nbcnews.com/mach/science/smartphones-are-changing-medical-care-some-surprising-ways-ncna810561
+https://www.sciencedirect.com/science/article/pii/S027795361830011X
