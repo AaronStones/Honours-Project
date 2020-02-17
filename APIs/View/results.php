@@ -32,13 +32,15 @@ if (isset($_SESSION['userData']) == false){
                 
                 $results = getReadings($_POST['email']);
 
-                include("../Controller/getBPM.php");
+                $heartRate = getBPM($_POST['email']);
 
-                $results2 = getBPM($_POST['email']);
+                $weight = getWeight($_POST['email']);
 
-                include("../Controller/getWeight.php");
+                $temperature = getTemp($_POST['email']);
 
-                $results3 = getWeight($_POST['email']);
+                $Sys = getSys($_POST['email']);
+
+                $Dys = getDys($_POST['email']);
 
 
                 if ($results == null){
@@ -47,9 +49,11 @@ if (isset($_SESSION['userData']) == false){
                 
                 else {
                     $dataPoints = json_decode($results);
-                    $dataPoints2 = json_decode($results2);
-                    $dataPoints3 = json_decode($results3);
-                    
+                    $dataPoints2 = json_decode($heartRate);
+                    $dataPoints3 = json_decode($Sys);
+                    $dataPoints4 = json_decode($Dys);
+                    $dataPoints5 = json_decode($weight);
+                    $dataPoints6 = json_decode($temperature);
                 }
             }
 
@@ -87,18 +91,31 @@ if (isset($_SESSION['userData']) == false){
             chart.render();
             var chart = new CanvasJS.Chart("chartContainer2", {
                 title: {
-                    text: "Blood Pressure"
+                    text: "Blood Pressure (Systolic)"
                 },
                 axisY: {
-                    title: "Systolic Blood Pressure"
+                    title: "Millimeters of Hg"
                 },
                 data: [{
                     type: "line",
-                    dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+                    dataPoints: <?php echo json_encode($dataPoints3, JSON_NUMERIC_CHECK); ?>
                 }]
             });
             chart.render();
             var chart = new CanvasJS.Chart("chartContainer3", {
+                title: {
+                    text: "Blood Pressure (Diastolic)"
+                },
+                axisY: {
+                    title: "Millimeters of Hg"
+                },
+                data: [{
+                    type: "line",
+                    dataPoints: <?php echo json_encode($dataPoints4, JSON_NUMERIC_CHECK); ?>
+                }]
+            });
+            chart.render();
+            var chart = new CanvasJS.Chart("chartContainer4", {
                 title: {
                     text: "Patient's Weight"
                 },
@@ -107,12 +124,12 @@ if (isset($_SESSION['userData']) == false){
                 },
                 data: [{
                     type: "line",
-                    dataPoints: <?php echo json_encode($dataPoints3, JSON_NUMERIC_CHECK); ?>
+                    dataPoints: <?php echo json_encode($dataPoints5, JSON_NUMERIC_CHECK); ?>
                 }]
             });
             chart.render();
 
-            var chart = new CanvasJS.Chart("chartContainer4", {
+            var chart = new CanvasJS.Chart("chartContainer5", {
                 title: {
                     text: "Patient's Temperature"
                 },
@@ -121,7 +138,7 @@ if (isset($_SESSION['userData']) == false){
                 },
                 data: [{
                     type: "line",
-                    dataPoints: <?php echo json_encode($dataPoints3, JSON_NUMERIC_CHECK); ?>
+                    dataPoints: <?php echo json_encode($dataPoints6, JSON_NUMERIC_CHECK); ?>
                 }]
             });
             chart.render();
@@ -132,11 +149,16 @@ if (isset($_SESSION['userData']) == false){
 
             </head>
             <body>
-            <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-            <div id="chartContainer1" style="height: 370px; width: 100%;"></div>
-            <div id="chartContainer2" style="height: 370px; width: 100%;"></div>
-            <div id="chartContainer3" style="height: 370px; width: 100%;"></div>
-            <div id="chartContainer4" style="height: 370px; width: 100%;"></div>
+            <?php
+            for ($i = 0; $i<6; $i++){
+                if ($i == 0){
+                    echo "<div id='chartContainer' style='height: 370px; width: 100%;'></div>";
+                }
+                else {
+                    echo "<div id='chartContainer" . $i . "' style='height: 370px; width: 100%;'></div>";
+                }
+            }
+            ?>
             <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
         <?php include("templates/footer.php"); ?>
     </body>

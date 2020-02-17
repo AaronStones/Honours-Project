@@ -10,4 +10,34 @@ function getReadings($email){
     return retrieveResults($email);
 }
 
+function getWeight($email){
+    $check = null;
+
+    return retrieveWeight($email);
+}
+
+function getBPM($email){
+    $check = null;
+
+    return retrieveBPM($email);
+}
+
+function getTemp($email){
+    $check = null;
+
+    return retrieveTemp($email);
+}
+
+function getSys($email){
+    $check = null;
+
+    return retrieveSys($email);
+}
+
+function getDys($email){
+    $check = null;
+
+    return retrieveDys($email);
+}
+
 ?>

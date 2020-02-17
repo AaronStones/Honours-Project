@@ -26,7 +26,7 @@
         $sql = $conn->prepare("SELECT * from Results where email=? ORDER BY Timestamp DESC");
         $sql->bind_param("s", $email);
         $sql->execute();
-        $sql->bind_result($email, $doctor, $Result, $BPM, $weight, $time);
+        $sql->bind_result($email, $doctor, $Result, $BPM, $weight, $Temp, $Sys, $Dys, $time);
 
         $count = 0;
         while ($sql->fetch()) {
@@ -43,7 +43,7 @@
         $sql = $conn->prepare("SELECT * from Results where email=? ORDER BY Timestamp DESC");
         $sql->bind_param("s", $email);
         $sql->execute();
-        $sql->bind_result($email, $doctor, $Result, $BPM, $weight, $time);
+        $sql->bind_result($email, $doctor, $Result, $BPM, $weight, $Temp, $Sys, $Dys, $time);
 
         $count = 0;
         while ($sql->fetch()) {
@@ -60,12 +60,62 @@
         $sql = $conn->prepare("SELECT * from Results where email=? ORDER BY Timestamp DESC");
         $sql->bind_param("s", $email);
         $sql->execute();
-        $sql->bind_result($email, $doctor, $Result, $BPM, $weight, $time);
+        $sql->bind_result($email, $doctor, $Result, $BPM, $weight, $Temp, $Sys, $Dys, $time);
 
         $count = 0;
         while ($sql->fetch()) {
             $json[$count] =  array(
                 'y' => $weight,
+                'label' => $time);
+            $count++;
+        }
+        return json_encode($json);
+    }
+
+    function retrieveTemp($email){
+        global $conn;
+        $sql = $conn->prepare("SELECT * from Results where email=? ORDER BY Timestamp DESC");
+        $sql->bind_param("s", $email);
+        $sql->execute();
+        $sql->bind_result($email, $doctor, $Result, $BPM, $weight, $Temp, $Sys, $Dys, $time);
+
+        $count = 0;
+        while ($sql->fetch()) {
+            $json[$count] =  array(
+                'y' => $Temp,
+                'label' => $time);
+            $count++;
+        }
+        return json_encode($json);
+    }
+
+    function retrieveSys($email){
+        global $conn;
+        $sql = $conn->prepare("SELECT * from Results where email=? ORDER BY Timestamp DESC");
+        $sql->bind_param("s", $email);
+        $sql->execute();
+        $sql->bind_result($email, $doctor, $Result, $BPM, $weight, $Temp, $Sys, $Dys, $time);
+
+        $count = 0;
+        while ($sql->fetch()) {
+            $json[$count] =  array(
+                'y' => $Sys,
+                'label' => $time);
+            $count++;
+        }
+        return json_encode($json);
+    }
+    function retrieveDys($email){
+        global $conn;
+        $sql = $conn->prepare("SELECT * from Results where email=? ORDER BY Timestamp DESC");
+        $sql->bind_param("s", $email);
+        $sql->execute();
+        $sql->bind_result($email, $doctor, $Result, $BPM, $weight, $Temp, $Sys, $Dys, $time);
+
+        $count = 0;
+        while ($sql->fetch()) {
+            $json[$count] =  array(
+                'y' => $Dys,
                 'label' => $time);
             $count++;
         }
