@@ -30,20 +30,26 @@ if (isset($_SESSION['userData']) == false){
 
                 include("../Controller/getResultsM.php");
                 
-              
                 $results = getReadings($_POST['email']);
-                $results = json_decode($results);
+
+                include("../Controller/getBPM.php");
+
+                $results2 = getBPM($_POST['email']);
+
+                include("../Controller/getWeight.php");
+
+                $results3 = getWeight($_POST['email']);
+
 
                 if ($results == null){
                   echo "Invalid Entry";
                 }
                 
                 else {
-                    for ($i=0; $i<sizeof($results);$i++){
-                        $dataPoints = array(
-                            array("y" => $results[$i]->result, "label" => $results[$i]->time)
-                        );
-                    }
+                    $dataPoints = json_decode($results);
+                    $dataPoints2 = json_decode($results2);
+                    $dataPoints3 = json_decode($results3);
+                    
                 }
             }
 
@@ -66,6 +72,19 @@ if (isset($_SESSION['userData']) == false){
             });
             chart.render();
 
+                var chart = new CanvasJS.Chart("chartContainer1", {
+                title: {
+                    text: "Heart Rate"
+                },
+                axisY: {
+                    title: "Bpm (Beats per Minute)"
+                },
+                data: [{
+                    type: "line",
+                    dataPoints: <?php echo json_encode($dataPoints2, JSON_NUMERIC_CHECK); ?>
+                }]
+            });
+            chart.render();
             var chart = new CanvasJS.Chart("chartContainer2", {
                 title: {
                     text: "Blood Pressure"
@@ -79,17 +98,30 @@ if (isset($_SESSION['userData']) == false){
                 }]
             });
             chart.render();
-
-            var chart = new CanvasJS.Chart("chartContainer1", {
+            var chart = new CanvasJS.Chart("chartContainer3", {
                 title: {
-                    text: "Heart Rate"
+                    text: "Patient's Weight"
                 },
                 axisY: {
-                    title: "Bpm (Beats per Minute)"
+                    title: "Kilograms"
                 },
                 data: [{
                     type: "line",
-                    dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+                    dataPoints: <?php echo json_encode($dataPoints3, JSON_NUMERIC_CHECK); ?>
+                }]
+            });
+            chart.render();
+
+            var chart = new CanvasJS.Chart("chartContainer4", {
+                title: {
+                    text: "Patient's Temperature"
+                },
+                axisY: {
+                    title: "Degrees Celsius"
+                },
+                data: [{
+                    type: "line",
+                    dataPoints: <?php echo json_encode($dataPoints3, JSON_NUMERIC_CHECK); ?>
                 }]
             });
             chart.render();
@@ -103,6 +135,8 @@ if (isset($_SESSION['userData']) == false){
             <div id="chartContainer" style="height: 370px; width: 100%;"></div>
             <div id="chartContainer1" style="height: 370px; width: 100%;"></div>
             <div id="chartContainer2" style="height: 370px; width: 100%;"></div>
+            <div id="chartContainer3" style="height: 370px; width: 100%;"></div>
+            <div id="chartContainer4" style="height: 370px; width: 100%;"></div>
             <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
         <?php include("templates/footer.php"); ?>
     </body>
