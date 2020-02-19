@@ -97,6 +97,11 @@ public class TestResultsWorker extends AsyncTask<String,Void,String>{
                 Log.d("failed","json parser failed");
             }
             List<String> Result = new ArrayList<String>(obj.length());
+            List<String> HR = new ArrayList<String>(obj.length());
+            List<String> Weight = new ArrayList<String>(obj.length());
+            List<String> Temp = new ArrayList<String>(obj.length());
+            List<String> Sys = new ArrayList<String>(obj.length());
+            List<String> Dys = new ArrayList<String>(obj.length());
             List<String> Time = new ArrayList<String>(obj.length());
 
             for (int i = 0; i < obj.length(); ++i) {
@@ -104,6 +109,11 @@ public class TestResultsWorker extends AsyncTask<String,Void,String>{
                     JSONObject o = obj.getJSONObject(i);
 
                     Result.add((String) (o.getString("result")));
+                    HR.add((String) (o.getString("hr")));
+                    Weight.add((String) (o.getString("weight")));
+                    Temp.add((String) (o.getString("temp")));
+                    Sys.add((String) (o.getString("sys")));
+                    Dys.add((String) (o.getString("dys")));
                     Time.add((String) (o.getString("time")));
                 }
                 catch (JSONException e) {
@@ -111,7 +121,7 @@ public class TestResultsWorker extends AsyncTask<String,Void,String>{
 
             }
             for (int i = 0; i< obj.length();i++){
-                results += Email + ": " + Result.get(i) + "\t" + Time.get(i) + "\n\n";
+                results += Email + ": " + Result.get(i) + "\t" + HR.get(i) + "\t" + Weight.get(i)  + "\t" + Temp.get(i) + "\t" + Sys.get(i) + "\t" + Dys.get(i) + "\t" + Time.get(i) + "\n\n";
 
             }
             TextView txtView = (TextView) ((Activity)context).findViewById(R.id.textView17);
