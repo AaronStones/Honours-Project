@@ -19,7 +19,7 @@
     // Send email to movie recommender address
     $to = "1600964@uad.ac.uk";
     $fullMessage = wordwrap("Elderly Helper - From: $from\n\n$message");
-    mail($to, 'Elderly Helper - ' . $subject, $fullMessage);
+    mail($to, 'Elderly Helper - ' . $subject, $fullMessage); //change
 
 
     // Send email to sender to confirm that the message was sent
