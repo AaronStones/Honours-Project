@@ -38,6 +38,28 @@
         return json_encode($json);
     }
 
+    function retrieveAll($email){
+        global $conn;
+        $sql = $conn->prepare("SELECT * from Results where email=? ORDER BY Timestamp DESC");
+        $sql->bind_param("s", $email);
+        $sql->execute();
+        $sql->bind_result($email, $doctor, $Result, $BPM, $weight, $Temp, $Sys, $Dys, $time);
+
+        $count = 0;
+        while ($sql->fetch()) {
+            $json[$count] =  array(
+                'result' => $Result,
+                'hr' => $BPM,
+                'weight' => $weight,
+                'temp' => $Temp,
+                'sys' => $Sys,
+                'dys' => $Dys,
+                'time' => $time);
+            $count++;
+        }
+        return json_encode($json);
+    }
+
     function retrieveBPM($email){
         global $conn;
         $sql = $conn->prepare("SELECT * from Results where email=? ORDER BY Timestamp DESC");

@@ -8,6 +8,6 @@ $check = null;
 
 $email = $_POST["email"];
 
-echo retrieveResults($email);
+echo retrieveAll($email);
 
 ?>

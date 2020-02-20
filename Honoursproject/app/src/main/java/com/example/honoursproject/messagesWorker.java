@@ -2,8 +2,15 @@ package com.example.honoursproject;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.AsyncTask;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.BackgroundColorSpan;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
+import android.util.Size;
 import android.widget.TextView;
 
 import org.json.JSONArray;
@@ -31,7 +38,6 @@ public class messagesWorker extends AsyncTask<String,Void,String> {
     String type;
     String message;
     String docName;
-
 
     messagesWorker(Context ctx){
 
@@ -123,6 +129,7 @@ public class messagesWorker extends AsyncTask<String,Void,String> {
 
     @Override
     protected void onPostExecute(String result) {
+        TextView txtView = (TextView) ((Activity)context).findViewById(R.id.textView12);
         JSONArray obj = null;
         if (type.equals("getMessages")) {
             try
@@ -152,15 +159,33 @@ public class messagesWorker extends AsyncTask<String,Void,String> {
             for (int i = 0; i< obj.length();i++){
 
                 if (Doctor.get(i) == 1){
-                    message += "Dr " +  docName + ": " + Message.get(i) + "\t" + Time.get(i) + "\n\n";
+                    message = "\t\t\t\t\t\tDr: " + Message.get(i) + "\n\n\n";
+                    SpannableStringBuilder ssb = new SpannableStringBuilder(message);
+
+                    ForegroundColorSpan fcsRed = new ForegroundColorSpan(Color.WHITE);
+                    BackgroundColorSpan fcsBlue = new BackgroundColorSpan(Color.BLUE);
+
+                    ssb.setSpan(fcsRed, 0, message.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    ssb.setSpan(fcsBlue, 0, message.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+                    txtView.append(ssb);
                 }
                 else{
-                    message += Email + ": " + Message.get(i) + "\t" + Time.get(i) + "\n\n";
+                    message = "\t" + Message.get(i) + "\t\n\n";
+
+                    SpannableStringBuilder ssb = new SpannableStringBuilder(message);
+
+                    ForegroundColorSpan fcsBlue = new ForegroundColorSpan(Color.WHITE);
+                    BackgroundColorSpan fcsGreen = new BackgroundColorSpan(Color.GREEN);
+
+                    ssb.setSpan(fcsBlue, 0, message.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    ssb.setSpan(fcsGreen, 0, message.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+
+                    txtView.append(ssb);
                 }
 
             }
-            TextView txtView = (TextView) ((Activity)context).findViewById(R.id.textView12);
-            txtView.setText(message.substring(4));
 
 
 
