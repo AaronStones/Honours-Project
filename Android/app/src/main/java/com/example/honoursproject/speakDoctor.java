@@ -9,7 +9,6 @@ import android.widget.EditText;
 import org.json.JSONObject;
 
 public class speakDoctor extends AppCompatActivity {
-    JSONObject userJson;
     String doctorName;
     String email;
 

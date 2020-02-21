@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#e8f7ff"
     android:layout_height="match_parent"
     tools:context=".Account">
 
@@ -12,6 +13,7 @@
         tools:context=".MainActivity">
 
         <TextView
+            style="@style/nameStyle"
             android:id="@+id/textView5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -22,6 +24,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
+            style="@style/buttonStyle"
             android:id="@+id/button2"
             android:layout_width="196dp"
             android:layout_height="53dp"
@@ -36,6 +39,7 @@
             app:layout_constraintVertical_bias="1.0" />
 
         <Button
+            style="@style/buttonStyle"
             android:id="@+id/button3"
             android:layout_width="196dp"
             android:layout_height="53dp"
@@ -47,6 +51,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
+            style="@style/buttonStyle"
             android:id="@+id/button4"
             android:layout_width="196dp"
             android:layout_height="53dp"
@@ -59,6 +64,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
+            style="@style/buttonStyle"
             android:id="@+id/button5"
             android:layout_width="196dp"
             android:layout_height="53dp"
@@ -71,6 +77,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
+            style="@style/textStyle"
             android:id="@+id/textView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -83,6 +90,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
+            style="@style/buttonStyle"
             android:id="@+id/button"
             android:layout_width="196dp"
             android:layout_height="53dp"
@@ -95,6 +103,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
+            style="@style/textStyle"
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -110,6 +119,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
+        style="@style/nameStyle"
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

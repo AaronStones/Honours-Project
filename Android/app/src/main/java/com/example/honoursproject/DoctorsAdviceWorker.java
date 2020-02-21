@@ -120,7 +120,7 @@ public class DoctorsAdviceWorker extends AsyncTask<String,Void,String> {
             }
             for (int i = 0; i< obj.length();i++){
 
-                advice += Advice.get(i) + "\tDr " + Doctor.get(i) + "\t" + Time.get(i) + "\n\n";
+                advice += Advice.get(i) + "\t\nDr " + Doctor.get(i) + "\n\n";
             }
             TextView txtView = (TextView) ((Activity)context).findViewById(R.id.textView12);
             int thing = advice.length();

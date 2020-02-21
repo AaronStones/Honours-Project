@@ -4,10 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#e8f7ff"
     tools:context=".speakDoctor">
 
 
     <EditText
+        style="@style/textStyle"
         android:id="@+id/editText4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,6 +22,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
+        style="@style/buttonStyle"
         android:id="@+id/button11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -48,13 +51,11 @@
                 android:orientation="vertical" >
 
                 <TextView
+                    style="@style/textStyle"
                     android:id="@+id/textView12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:textColor="@android:color/holo_blue_bright"
-                    android:textColorHighlight="@android:color/holo_blue_bright"
-                    android:textColorHint="@android:color/holo_blue_bright"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView15" />

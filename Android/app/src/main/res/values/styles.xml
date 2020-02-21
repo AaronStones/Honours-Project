@@ -8,4 +8,38 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="textStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:textColor">#A9000000</item>
+    </style>
+
+    <style name="titleStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:textColor">#A9000000</item>
+    </style>
+
+    <style name="buttonStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:typeface">sans</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:background">#8B037D6B</item>
+    </style>
+
+    <style name="nameStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:textColor">#A9000000</item>
+    </style>
+
 </resources>

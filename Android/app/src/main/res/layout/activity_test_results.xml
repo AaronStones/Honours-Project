@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#e8f7ff"
     tools:context=".TestResults">
 
     <TextView
+        style="@style/textStyle"
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,6 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        style="@style/textStyle"
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
