@@ -59,6 +59,17 @@ public class Account extends AppCompatActivity {
         this.startActivity(intent);
     }
 
+    public void testing(View view){
+
+        Intent intent = new Intent(this, test.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("email", email);
+        intent.putExtra("json", json);
+        intent.putExtra("doctor", doctorName);
+        this.startActivity(intent);
+    }
+
+
     public void changeInfo(View view){
 
         Intent intent = new Intent(this, UpdateInformation.class);
@@ -66,7 +77,8 @@ public class Account extends AppCompatActivity {
         intent.putExtra("email", email);
         intent.putExtra("json", json);
         intent.putExtra("doctor", doctorName);
-        this.startActivity(intent);      }
+        this.startActivity(intent);
+    }
 
     public void takeTest(View view){
 
