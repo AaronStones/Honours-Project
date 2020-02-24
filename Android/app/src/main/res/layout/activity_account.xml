@@ -28,39 +28,37 @@
             style="@style/buttonStyle"
             android:layout_width="196dp"
             android:layout_height="53dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="20dp"
             android:onClick="viewResults"
             android:text="Test Results"
             app:layout_constraintBottom_toTopOf="@+id/button"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.474"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView6"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/button8"
             style="@style/buttonStyle"
             android:layout_width="196dp"
             android:layout_height="53dp"
-            android:layout_marginTop="52dp"
+            android:layout_marginBottom="20dp"
             android:onClick="testing"
             android:text="Test Bluetooth"
+            app:layout_constraintBottom_toTopOf="@+id/button2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/button3"
             style="@style/buttonStyle"
             android:layout_width="196dp"
             android:layout_height="53dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="20dp"
             android:onClick="takeTest"
             android:text="Take Test"
             app:layout_constraintBottom_toTopOf="@+id/button4"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
@@ -68,12 +66,12 @@
             style="@style/buttonStyle"
             android:layout_width="196dp"
             android:layout_height="53dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="20dp"
             android:onClick="doctorsNotes"
             android:text="Doctor's Notes"
             app:layout_constraintBottom_toTopOf="@+id/button5"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
@@ -107,12 +105,12 @@
             style="@style/buttonStyle"
             android:layout_width="196dp"
             android:layout_height="53dp"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="20dp"
             android:onClick="changeInfo"
             android:text="Update Information"
             app:layout_constraintBottom_toTopOf="@+id/button3"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView

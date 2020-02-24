@@ -61,7 +61,7 @@ public class Account extends AppCompatActivity {
 
     public void testing(View view){
 
-        Intent intent = new Intent(this, test.class);
+        Intent intent = new Intent(this, thisIsaTest.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("email", email);
         intent.putExtra("json", json);
