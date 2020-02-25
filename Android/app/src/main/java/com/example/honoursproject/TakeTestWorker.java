@@ -30,8 +30,6 @@ import java.util.List;
         Context context;
         String Email;
         String type;
-        String message;
-        String docName;
         AlertDialog alertDialog;
 
 
@@ -43,10 +41,15 @@ import java.util.List;
         protected String doInBackground(String... params) {
             type = params[0];
             if (params[0].equals("result")){
-                String value = params[2];
                 String urlAdvice = "https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/Controller/recordResult.php";
                 Email = params[1];
-                String doctor = params[3];
+                String doctor = params[2];
+                String counts = params[3];
+                String hr = params[4];
+                String weight = params[5];
+                String temp = params[6];
+                String sys = params[7];
+                String dys = params[8];
                 try{
                     URL url = new URL(urlAdvice);
                     HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
@@ -56,7 +59,12 @@ import java.util.List;
                     OutputStream outputStream = httpURLConnection.getOutputStream();
                     BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
                     String post_data = URLEncoder.encode("email", "UTF-8")+"="+ URLEncoder.encode(Email, "UTF-8")+"&"
-                            +URLEncoder.encode("result","UTF-8")+"="+URLEncoder.encode(value,"UTF-8") +"&"
+                            +URLEncoder.encode("count","UTF-8")+"="+URLEncoder.encode(counts,"UTF-8") +"&"
+                            +URLEncoder.encode("weight","UTF-8")+"="+URLEncoder.encode(weight,"UTF-8") +"&"
+                            +URLEncoder.encode("temperature","UTF-8")+"="+URLEncoder.encode(temp,"UTF-8") +"&"
+                            +URLEncoder.encode("hr","UTF-8")+"="+URLEncoder.encode(hr,"UTF-8") +"&"
+                            +URLEncoder.encode("dys","UTF-8")+"="+URLEncoder.encode(dys,"UTF-8") +"&"
+                            +URLEncoder.encode("sys","UTF-8")+"="+URLEncoder.encode(sys,"UTF-8") +"&"
                             +URLEncoder.encode("doctor","UTF-8")+"="+URLEncoder.encode(doctor,"UTF-8");
 
                     bufferedWriter.write(post_data);

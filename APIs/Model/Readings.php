@@ -4,11 +4,11 @@
 	$conn =  $db->getConnstring();
 
 
-    function recordReading($email, $result, $doctor){
+    function recordReading($email, $doctor, $count, $weight, $temp, $hr, $dys, $sys){
         global $conn;
         $value = 0;
-        $sql = $conn->prepare("INSERT INTO Results (email, Doctor, Result) Values(?,?,?)");
-        $sql->bind_param("ssi", $email, $doctor, $result);
+        $sql = $conn->prepare("INSERT INTO Results (email, Doctor, Result, HR, Weight, Temperature, Sys, Dys) Values(?,?,?,?,?,?,?,?)");
+        $sql->bind_param("ssiiiiii", $email, $doctor, $count, $hr, $temp, $weight, $sys, $dys);
         $sql->execute();
 
         $affectedRows = $sql->affected_rows;
