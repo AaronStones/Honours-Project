@@ -1,8 +1,13 @@
 package com.example.honoursproject;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorManager;
@@ -18,6 +23,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import static android.view.View.VISIBLE;
 
 
@@ -29,23 +37,35 @@ public class TakeTest extends AppCompatActivity implements SensorEventListener{
     private float last_x, last_y, last_z;
     private static final int SHAKE_THRESHOLD = 400;
 
+    String doctorName;
+    String email;
+
     int count = -5;
     int SYS;
     int DYS;
-    int HR;
+    int HR = 0;
     int Weight;
     int Temp;
 
-    String email = "stonesclan090@gmail.com";
-    String doctorName = "Geoffrey Lund";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_take_test);
 
+        doctorName = getIntent().getStringExtra("doctor");
+        email = getIntent().getStringExtra("email");
+
+
+
+
         senSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         senAccelerometer = senSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         senSensorManager.registerListener(this, senAccelerometer , SensorManager.SENSOR_DELAY_NORMAL);
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 0);
+        }
     }
 
     @Override
@@ -157,36 +177,33 @@ public class TakeTest extends AppCompatActivity implements SensorEventListener{
 
     }
 
-    public void BP(View view){
-        EditText editText = findViewById(R.id.editText10);
-        editText.setVisibility(VISIBLE);
-
-        Button button = findViewById(R.id.button16);
-        button.setVisibility(VISIBLE);
-
-        editText = findViewById(R.id.editText13);
+    public void BP(View view) throws JSONException {
+        EditText editText = findViewById(R.id.editText13);
 
         String bp = editText.getText().toString();
         SYS = Integer.parseInt(bp.substring(0, 3));
         DYS = Integer.parseInt(bp.substring(4));
+
+        HR();
     }
 
-    public void HR(View view){
-        EditText editText = findViewById(R.id.editText10);
-        HR = Integer.parseInt(editText.getText().toString());
-        writeToDatabase();
+    public void HR() throws JSONException {
+        Intent intent;
+        intent = new Intent(getApplicationContext(), Measure.class);
+
+        JSONObject obj=new JSONObject();
+        obj.put("email", email);
+        obj.put("doctor", doctorName);
+        obj.put("weight", Weight);
+        obj.put("count", count);
+        obj.put("temperature", Temp);
+        obj.put("sys", SYS);
+        obj.put("dys", DYS);
+
+
+        intent.putExtra("email", obj.toString());
+        startActivity(intent);
     }
 
-    public void writeToDatabase(){
-        String counts = Integer.toString(count);
-        String weights = Integer.toString(Weight);
-        String temperature = Integer.toString(Temp);
-        String sys = Integer.toString(SYS);
-        String dys = Integer.toString(DYS);
-        String hr = Integer.toString(HR);
-        String type = "result";
 
-        TakeTestWorker backgroundWorker = new TakeTestWorker(this);
-        backgroundWorker.execute(type, email, doctorName, counts, hr, weights, temperature, sys, dys);
-    }
 }

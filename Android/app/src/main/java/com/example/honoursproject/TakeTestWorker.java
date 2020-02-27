@@ -50,6 +50,7 @@ import java.util.List;
                 String temp = params[6];
                 String sys = params[7];
                 String dys = params[8];
+
                 try{
                     URL url = new URL(urlAdvice);
                     HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();

@@ -86,6 +86,7 @@ public class Account extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("email", email);
         intent.putExtra("doctor", doctorName);
+        intent.putExtra("value", 0);
         this.startActivity(intent);
     }
 

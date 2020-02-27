@@ -47,10 +47,10 @@ $name = $data->name;
                 else {
                     for ($i=0; $i<sizeof($message);$i++){
                         if ($message[$i]->doctor == 1){
-                            echo "<b>Dr " . $name . ": </b>" . $message[$i]->message . "     " . $message[$i]->time . "</br></br>";
+                            echo "<b>Dr " . $name . ": </b>" . $message[$i]->message .  "</br></br>";
                         }
                         else{
-                            echo "<b>Patient: </b>" . $message[$i]->message . "     " . $message[$i]->time . "</br></br>";
+                            echo "<b>Patient: </b>" . $message[$i]->message . "</br></br>";
                         }
                     }
                 }

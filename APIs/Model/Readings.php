@@ -8,13 +8,13 @@
         global $conn;
         $value = 0;
         $sql = $conn->prepare("INSERT INTO Results (email, Doctor, Result, HR, Weight, Temperature, Sys, Dys) Values(?,?,?,?,?,?,?,?)");
-        $sql->bind_param("ssiiiiii", $email, $doctor, $count, $hr, $temp, $weight, $sys, $dys);
+        $sql->bind_param("ssiiiiii", $email, $doctor, $count, $hr, $weight, $temp, $sys, $dys);
         $sql->execute();
 
         $affectedRows = $sql->affected_rows;
 
             if ($affectedRows == 1) {
-                return "Success";
+                return "Test Complete!";
             } 
             else {
                 return null;
