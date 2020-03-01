@@ -19,11 +19,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Measure"></activity>
-        <activity android:name=".thisIsaTest">
-            <meta-data
-                android:name="android.support.Account"
-                android:value="com.teamamazing.with_sidebar.activity.SpecialPage" />
-        </activity>
         <activity android:name=".DoctorsAdvice">
             <meta-data
                 android:name="android.support.Account"

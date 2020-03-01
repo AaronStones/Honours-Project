@@ -59,17 +59,6 @@ public class Account extends AppCompatActivity {
         this.startActivity(intent);
     }
 
-    public void testing(View view){
-
-        Intent intent = new Intent(this, thisIsaTest.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra("email", email);
-        intent.putExtra("json", json);
-        intent.putExtra("doctor", doctorName);
-        this.startActivity(intent);
-    }
-
-
     public void changeInfo(View view){
 
         Intent intent = new Intent(this, UpdateInformation.class);

@@ -43,7 +43,6 @@ public class TakeTest extends AppCompatActivity implements SensorEventListener{
     int count = -5;
     int SYS;
     int DYS;
-    int HR = 0;
     int Weight;
     int Temp;
 
@@ -117,6 +116,7 @@ public class TakeTest extends AppCompatActivity implements SensorEventListener{
 
 
     public void Begin(View view){
+
         Button begin = findViewById(R.id.button12);
         begin.setVisibility(view.INVISIBLE);
         TextView textView = findViewById(R.id.textView16);
@@ -144,6 +144,11 @@ public class TakeTest extends AppCompatActivity implements SensorEventListener{
                 }, 2000);
             }
         }, 5000);
+        showWeights();
+
+    }
+
+    void showWeights(){
         EditText editText = findViewById(R.id.editText11);
         editText.setVisibility(VISIBLE);
 
