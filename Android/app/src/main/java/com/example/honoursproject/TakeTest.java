@@ -35,12 +35,12 @@ public class TakeTest extends AppCompatActivity implements SensorEventListener{
     private Sensor senAccelerometer;
     private long lastUpdate = 0;
     private float last_x, last_y, last_z;
-    private static final int SHAKE_THRESHOLD = 400;
+    private static final int SHAKE_THRESHOLD = 25;
 
     String doctorName;
     String email;
 
-    int count = -5;
+    int count = 0;
     int SYS;
     int DYS;
     int Weight;
@@ -85,9 +85,6 @@ public class TakeTest extends AppCompatActivity implements SensorEventListener{
                 float speed = Math.abs(x + y + z - last_x - last_y - last_z)/ diffTime * 10000;
 
                 if (speed > SHAKE_THRESHOLD) {
-                    EditText editText = findViewById(R.id.editText4);
-                    String thing = "Shake Detected " + Integer.toString(count);
-                    editText.setText(thing);
                     count++;
                 }
 
@@ -116,36 +113,7 @@ public class TakeTest extends AppCompatActivity implements SensorEventListener{
 
 
     public void Begin(View view){
-
-        Button begin = findViewById(R.id.button12);
-        begin.setVisibility(view.INVISIBLE);
-        TextView textView = findViewById(R.id.textView16);
-        textView.setText("please wait for the beep, then place the phone in the palm of your hand and wait until you hear the second beep");
-
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                // Do something after 5s = 5000ms
-                ToneGenerator toneGen1 = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
-                toneGen1.startTone(ToneGenerator.TONE_CDMA_PIP,200);
-
-                final Handler handler2 = new Handler();
-                handler2.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        // Do something after 5s = 5000ms
-
-                        ToneGenerator toneGen1 = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
-                        toneGen1.startTone(ToneGenerator.TONE_CDMA_PIP,200);
-
-
-                    }
-                }, 2000);
-            }
-        }, 5000);
         showWeights();
-
     }
 
     void showWeights(){
