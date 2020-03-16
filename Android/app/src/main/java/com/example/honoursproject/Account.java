@@ -18,6 +18,8 @@ public class Account extends AppCompatActivity {
     String doctorName;
     String json;
     String email;
+    String Names;
+    String Mobile;
 
 
     @Override
@@ -26,8 +28,9 @@ public class Account extends AppCompatActivity {
         setContentView(R.layout.activity_account);
 
         setupVariables();
+
         TextView Name = findViewById(R.id.textView7);
-        Name.setText("Welcome Back : " + email);
+        Name.setText("Welcome Back : " + Names);
         TextView Doctor = findViewById(R.id.textView6);
         Doctor.setText("Doctor : Dr " + doctorName);
     }
@@ -39,12 +42,23 @@ public class Account extends AppCompatActivity {
             email = userJson.getString(("email"));
             json = userJson.getString("json");
 
-
         }
         catch(Exception e){
             Intent intent = new Intent(this, MainActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             this.startActivity(intent);
+        }
+
+        try {
+            JSONObject userJson = new JSONObject(json);
+
+            Mobile = userJson.getString("Mobile");
+            Names = userJson.getString("name");
+        }
+
+        catch (Exception e) {
+            Log.d("fail",json);
+            Log.d("fail","fail");
         }
 
         return null;
@@ -66,6 +80,7 @@ public class Account extends AppCompatActivity {
         intent.putExtra("email", email);
         intent.putExtra("json", json);
         intent.putExtra("doctor", doctorName);
+
         this.startActivity(intent);
     }
 

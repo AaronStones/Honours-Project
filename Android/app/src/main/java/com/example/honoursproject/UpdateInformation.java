@@ -59,9 +59,10 @@ public class UpdateInformation extends AppCompatActivity {
         }
 
         catch (Exception e) {
+            Log.d("fail",json);
+            Log.d("fail","fail");
         }
-        Log.d("fail",json);
-        Log.d("fail","fail");
+
 
 
 
