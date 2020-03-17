@@ -28,3 +28,7 @@ https://www.ft.com/content/1efb95ba-d852-11e6-944b-e7eb37a6aa8e
 https://www.nbcnews.com/mach/science/smartphones-are-changing-medical-care-some-surprising-ways-ncna810561
 https://www.sciencedirect.com/science/article/pii/S027795361830011X
 https://patient.info/doctor/parkinsons-disease-management
+Burnett S, Franklin BD, Moorthy K, et al How reliable are clinical systems in the UK NHS? A study of seven NHS organisations BMJ Quality & Safety 2012;21:466-472.
+https://image.slidesharecdn.com/smarthome-170303034202/95/smart-home-environment-using-iot-8-638.jpg?cb=1488512587
+https://www.statista.com/statistics/271851/smartphone-owners-in-the-united-kingdom-uk-by-age/
+http://www.isatafrica.com/solutions/tele-medicine
