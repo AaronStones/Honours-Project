@@ -21,13 +21,31 @@ function Login($email, $pass) //function to validate a user's login details
                 'id' => $key,
                 'email' => $email,
                 'json' => json_decode($json),
-                'doctor' => $doctor,
-                'time' => $time));
+                'doctor' => $doctor));
         }
         else {
             return "Incorrect credentials, please try again";
         }
     }
+
+}
+
+function retriveAccountResults($email){
+        global $conn;
+        $sql = $conn->prepare("SELECT * from Results where email=? ORDER BY Timestamp DESC");
+        $sql->bind_param("s", $email);
+        $sql->execute();
+        $sql->bind_result($email, $doctor, $Result, $BPM, $weight, $Temp, $Sys, $Dys, $time);
+
+        $count = 0;
+        while ($sql->fetch()) {
+            $array[$count] = array(
+                'result' => $Result,
+                'time' => $time);
+            $count++;
+        }
+        return json_encode($array);
+        
 }
 
 function LoginM($email, $pass){
@@ -124,7 +142,6 @@ function doctorChange($email, $doctor){
     
     function registerUser($email, $password){
             global $conn;
-; 
       
      
             $passwordHash = password_hash($password, PASSWORD_DEFAULT);

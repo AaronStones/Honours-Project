@@ -2,15 +2,17 @@ package com.example.honoursproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 
 import org.json.JSONObject;
+
 
 public class Account extends AppCompatActivity {
 
@@ -22,31 +24,33 @@ public class Account extends AppCompatActivity {
     String Mobile;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
 
         setupVariables();
+        getResults();
 
         TextView Name = findViewById(R.id.textView7);
         Name.setText("Welcome Back : " + Names);
         TextView Doctor = findViewById(R.id.textView6);
         Doctor.setText("Doctor : Dr " + doctorName);
+
     }
     private Void setupVariables(){
+        String userInfo = getIntent().getStringExtra("EXTRA_SESSION_ID");
+
         try {
-            String userInfo = getIntent().getStringExtra("EXTRA_SESSION_ID");
             userJson = new JSONObject(userInfo);
             doctorName = userJson.getString("doctor");
-            email = userJson.getString(("email"));
+            email = userJson.getString("email");
             json = userJson.getString("json");
 
         }
         catch(Exception e){
-            Intent intent = new Intent(this, MainActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            this.startActivity(intent);
+            Log.e("failed",userInfo);
         }
 
         try {
@@ -63,6 +67,16 @@ public class Account extends AppCompatActivity {
 
         return null;
     }
+
+    private void getResults(){
+        String type = "getResults";
+        String type2 = "retrieveResults";
+
+        TestResultsWorker backgroundWorker = new TestResultsWorker(this);
+        backgroundWorker.execute(type, type2, email);
+
+    }
+
 
     public void viewResults(View view){
 

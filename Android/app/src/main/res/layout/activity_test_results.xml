@@ -44,6 +44,109 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+            <TextView
+                android:id="@+id/textView20"
+                style="@style/textStyle"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="60dp"
+                android:text="Hand Shake Test"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/scrollView3" />
+
+
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/Hand"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
+
+            <TextView
+                android:id="@+id/textView21"
+                style="@style/textStyle"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="60dp"
+                android:text="Heart Rate"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/scrollView3" />
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/HeartR"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
+
+            <TextView
+                android:id="@+id/textView22"
+                style="@style/textStyle"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="60dp"
+                android:text="Weight"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/scrollView3" />
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/Weight"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"/>
+
+            <TextView
+                android:id="@+id/textView23"
+                style="@style/textStyle"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="60dp"
+                android:text="Temperature"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/scrollView3" />
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/Temp"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
+
+            <TextView
+                android:id="@+id/textView25"
+                style="@style/textStyle"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="60dp"
+                android:text="Systolic Blood Pressure"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/scrollView3" />
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/Sys"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
+
+            <TextView
+                android:id="@+id/textView26"
+                style="@style/textStyle"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="60dp"
+                android:text="Dystolic Blood Pressure"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/scrollView3" />
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/Dys"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
 
             <TextView
                 android:id="@+id/textView17"

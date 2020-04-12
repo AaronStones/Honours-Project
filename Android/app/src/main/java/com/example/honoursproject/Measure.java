@@ -1,7 +1,6 @@
 package com.example.honoursproject;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.hardware.Camera;
 import android.preference.PreferenceManager;
@@ -13,7 +12,6 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.WindowManager;
 import android.hardware.Camera.PreviewCallback;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -86,24 +84,6 @@ public class Measure extends AppCompatActivity implements SurfaceHolder.Callback
         }
     }
 
-    /*private static Camera.Size getSmallestPreviewSize(int width, int height, Camera.Parameters parameters) {
-        Camera.Size result = null;
-
-        for (Camera.Size size : parameters.getSupportedPreviewSizes()) {
-            if (size.width <= width && size.height <= height) {
-                if (result == null) {
-                    result = size;
-                } else {
-                    int resultArea = result.width * result.height;
-                    int newArea = size.width * size.height;
-                    if (newArea < resultArea) result = size;
-                }
-            }
-        }
-
-        return result;
-    }*/
-
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
         mCamera = Camera.open();
@@ -111,12 +91,6 @@ public class Measure extends AppCompatActivity implements SurfaceHolder.Callback
         if(parameters.getMaxExposureCompensation() != parameters.getMinExposureCompensation()){
             parameters.setExposureCompensation(0);
         }
-        /*if(parameters.isAutoExposureLockSupported()){
-            parameters.setAutoExposureLock(true);
-         }*/
-        /*if(parameters.isAutoWhiteBalanceLockSupported()){
-            parameters.setAutoWhiteBalanceLock(true);
-        }*/
         mCamera.setParameters(parameters);
         mCamera.setPreviewCallback(previewCallback);
         startTime = System.currentTimeMillis();
@@ -148,10 +122,6 @@ public class Measure extends AppCompatActivity implements SurfaceHolder.Callback
         mCamera.release();
     }
 
-    /**
-     * FROM: http://stackoverflow.com/questions/4645960/how-to-set-android-camera-orientation-properly
-     * @param camera
-     */
     public void setCameraDisplayOrientation(android.hardware.Camera camera) {
         Camera.Parameters parameters = camera.getParameters();
         android.hardware.Camera.CameraInfo camInfo = new android.hardware.Camera.CameraInfo();
@@ -196,7 +166,6 @@ public class Measure extends AppCompatActivity implements SurfaceHolder.Callback
             int height = size.height;
 
             int imgAvg = ImageProcessing.decodeYUV420SPtoRedAvg(data.clone(), height, width);
-            // Log.i(TAG, "imgAvg="+imgAvg);
             if (imgAvg == 0 || imgAvg == 255) {
                 processing.set(false);
                 return;
@@ -219,7 +188,6 @@ public class Measure extends AppCompatActivity implements SurfaceHolder.Callback
                 newType = TYPE.RED;
                 if (newType != currentType) {
                     beats++;
-                    // Log.d(TAG, "BEAT!! beats="+beats);
                 }
             } else if (imgAvg > rollingAverage) {
                 newType = TYPE.GREEN;
@@ -228,11 +196,6 @@ public class Measure extends AppCompatActivity implements SurfaceHolder.Callback
             if (averageIndex == averageArraySize) averageIndex = 0;
             averageArray[averageIndex] = imgAvg;
             averageIndex++;
-
-            // Transitioned from one state to another to the same
-            /*if (newType != currentType) {
-                currentType = newType;
-            }*/
 
             long endTime = System.currentTimeMillis();
             double totalTimeInSecs = (endTime - startTime) / 1000d;
@@ -246,8 +209,7 @@ public class Measure extends AppCompatActivity implements SurfaceHolder.Callback
                     return;
                 }
 
-                // Log.d(TAG,
-                // "totalTimeInSecs="+totalTimeInSecs+" beats="+beats);
+
 
                 if (beatsIndex == beatsArraySize) beatsIndex = 0;
                 beatsArray[beatsIndex] = dpm;
@@ -263,7 +225,7 @@ public class Measure extends AppCompatActivity implements SurfaceHolder.Callback
                 }
                 int beatsAvg = (beatsArrayAvg / beatsArrayCnt);
 
-                Log.e("testValue", ""+ beatsAvg);
+                endTest(email, beatsAvg);
 
 
                 SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(c);
@@ -271,7 +233,6 @@ public class Measure extends AppCompatActivity implements SurfaceHolder.Callback
                 editor.putString("LAST_MEASURE", String.valueOf(beatsAvg));
                 editor.commit();
 
-                endTest(email, beatsAvg);
 
 
                 startTime = System.currentTimeMillis();
@@ -288,7 +249,6 @@ public class Measure extends AppCompatActivity implements SurfaceHolder.Callback
         try {
 
             JSONObject obj = new JSONObject(email);
-
             TakeTestWorker backgroundWorker = new TakeTestWorker(c);
             backgroundWorker.execute(type, obj.getString("email"), obj.getString("doctor"), obj.getString("count"), Integer.toString(beats), obj.getString("weight"), obj.getString("temperature"), obj.getString("sys"), obj.getString("dys"));
 

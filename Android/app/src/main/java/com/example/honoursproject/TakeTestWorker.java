@@ -3,6 +3,7 @@ package com.example.honoursproject;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.TextView;
@@ -96,13 +97,18 @@ import java.util.List;
         @Override
         protected void onPreExecute() {
             alertDialog = new AlertDialog.Builder(context).create();
-            alertDialog.setTitle("Login Status");
+            alertDialog.setTitle("Test Result");
         }
 
         @Override
         protected void onPostExecute(String result) {
-            alertDialog.setMessage(result);
+            alertDialog.setMessage("test complete!");
             alertDialog.show();
+
+            Intent intent = new Intent(context, Account.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.putExtra("EXTRA_SESSION_ID", result);
+            context.startActivity(intent);
         }
 
 

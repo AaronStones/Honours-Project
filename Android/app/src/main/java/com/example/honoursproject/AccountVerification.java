@@ -138,7 +138,9 @@ public class AccountVerification extends AsyncTask<String,Void,String> {
             if (result.equals("Incorrect credentials, please try again") == true) {
                 alertDialog.setMessage("Incorrect credentials, please try again");
                 alertDialog.show();
-            } else {
+            }
+            else {
+
                 Intent intent = new Intent(context, Account.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("EXTRA_SESSION_ID", result);

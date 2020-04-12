@@ -22,8 +22,9 @@ public class TestResults extends AppCompatActivity {
 
     private void getResults(){
         String type = "getResults";
+        String type2 = "getResults";
 
         TestResultsWorker backgroundWorker = new TestResultsWorker(this);
-        backgroundWorker.execute(type, email);
+        backgroundWorker.execute(type, type2, email);
     }
 }
