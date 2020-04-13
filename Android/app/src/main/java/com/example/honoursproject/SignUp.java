@@ -2,11 +2,17 @@ package com.example.honoursproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class SignUp extends AppCompatActivity {
@@ -14,6 +20,9 @@ public class SignUp extends AppCompatActivity {
     private EditText email2;
     private EditText password;
     private EditText password2;
+
+    FormVerfication formCheck = new FormVerfication(this);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,10 +56,25 @@ public class SignUp extends AppCompatActivity {
             Boolean Park = ((CheckBox) findViewById(R.id.CheckBox1)).isChecked();
             Boolean Dem = ((CheckBox) findViewById(R.id.CheckBox2)).isChecked();
             Boolean Other = ((CheckBox) findViewById(R.id.CheckBox3)).isChecked();
-            AccountVerification backgroundWorker = new AccountVerification(this);
-            backgroundWorker.execute(type, Email, Password, Doctor, Boolean.toString(Park), Boolean.toString(Dem), Boolean.toString(Other));
+
+
+            if (Boolean.toString(checkForm(Doctor)).equals("true")){
+                formCheck.error();
+            }
+            else {
+
+                AccountVerification backgroundWorker = new AccountVerification(this);
+                backgroundWorker.execute(type, Email, Password, Doctor, Boolean.toString(Park), Boolean.toString(Dem), Boolean.toString(Other));
+            }
         }
     }
+
+    boolean checkForm(String values){
+
+        return formCheck.simpleCheck(values);
+    }
+
+
 
 
 

@@ -12,6 +12,8 @@ public class speakDoctor extends AppCompatActivity {
     String doctorName;
     String email;
 
+    FormVerfication formVerfication;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,9 +37,14 @@ public class speakDoctor extends AppCompatActivity {
         EditText editText = findViewById(R.id.editText4);
         String Message = editText.getText().toString();
 
-        messagesWorker backgroundWorker = new messagesWorker(this);
-        backgroundWorker.execute(type, email, Message);
+        if (formVerfication.simpleCheck(Message).toString().equals("true")){
+            formVerfication.error();
+        }
+        else {
+            messagesWorker backgroundWorker = new messagesWorker(this);
+            backgroundWorker.execute(type, email, Message);
 
-        getMessages();
+            getMessages();
+        }
     }
 }

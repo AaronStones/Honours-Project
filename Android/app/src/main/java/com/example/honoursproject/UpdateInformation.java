@@ -23,6 +23,8 @@ public class UpdateInformation extends AppCompatActivity {
     Boolean Other;
     Boolean Dementia;
 
+    FormVerfication formVerfication;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,44 +72,68 @@ public class UpdateInformation extends AppCompatActivity {
     }
 
     public void nameChange(View v ){
+
         try {
             EditText editText = findViewById(R.id.editText3);
+
             Name = editText.getText().toString();
-            JSONObject jsonObject = new JSONObject(json);
-            jsonObject.remove("name");
-            jsonObject.put("name", Name);
-            json = jsonObject.toString();
+            if (formVerfication.simpleCheck(Mobile).toString().equals("true")){
+                formVerfication.errorFormat();
+            }
+            else {
+                JSONObject jsonObject = new JSONObject(json);
+                jsonObject.remove("name");
+                jsonObject.put("name", Name);
+                json = jsonObject.toString();
+            }
         }
         catch (JSONException e){
+            formVerfication.error();
             e.printStackTrace();
         }
-        Log.d("json",json);
         String file = json;
 
         String type = "Json";
-
-        UpdateInformationWorker backgroundWorker = new UpdateInformationWorker(this);
-        backgroundWorker.execute(type, file, email, "nameChange");
-
+        if (formVerfication.simpleCheck(Mobile).toString().equals("true")){
+            formVerfication.error();
+        }
+        else {
+            UpdateInformationWorker backgroundWorker = new UpdateInformationWorker(this);
+            backgroundWorker.execute(type, file, email, "nameChange");
+        }
     }
     public void doctorChange(View v ){
         String type = "Doctor";
         EditText editText = findViewById(R.id.editText6);
         String doctorName = editText.getText().toString();
-
-        UpdateInformationWorker backgroundWorker = new UpdateInformationWorker(this);
-        backgroundWorker.execute(type, doctorName, email, "doctorChange");
-
+        if (formVerfication.mobileCheck(Mobile).toString().equals("true")){
+            formVerfication.errorFormat();
+        }
+        else {
+            if (formVerfication.simpleCheck(doctorName).toString().equals("true")) {
+                formVerfication.error();
+            } else {
+                UpdateInformationWorker backgroundWorker = new UpdateInformationWorker(this);
+                backgroundWorker.execute(type, doctorName, email, "doctorChange");
+            }
+        }
     }
 
     public void mobileChange(View v ){
         try {
             EditText editText = findViewById(R.id.editText9);
             Mobile = editText.getText().toString();
-            JSONObject jsonObject = new JSONObject(json);
-            jsonObject.remove("Mobile");
-            jsonObject.put("Mobile", Mobile);
-            json = jsonObject.toString();
+
+            if (formVerfication.intCheck(Mobile).toString().equals("true")){
+                formVerfication.errorFormat();
+            }
+            else {
+
+                JSONObject jsonObject = new JSONObject(json);
+                jsonObject.remove("Mobile");
+                jsonObject.put("Mobile", Mobile);
+                json = jsonObject.toString();
+            }
         }
         catch (JSONException e){
             e.printStackTrace();
@@ -115,9 +141,15 @@ public class UpdateInformation extends AppCompatActivity {
         Log.d("json",json);
         String file = json;
         String type = "Json";
-        UpdateInformationWorker backgroundWorker = new UpdateInformationWorker(this);
-        backgroundWorker.execute(type, file, email, "mobileChange");
 
+        if (formVerfication.simpleCheck(Mobile).toString().equals("true")){
+            formVerfication.error();
+        }
+        else {
+            UpdateInformationWorker backgroundWorker = new UpdateInformationWorker(this);
+
+            backgroundWorker.execute(type, file, email, "mobileChange");
+        }
 
     }
 }

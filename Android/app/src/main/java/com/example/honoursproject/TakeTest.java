@@ -40,6 +40,8 @@ public class TakeTest extends AppCompatActivity implements SensorEventListener{
     String doctorName;
     String email;
 
+    FormVerfication formVerfication;
+
     int count = 0;
     int SYS;
     int DYS;
@@ -132,9 +134,12 @@ public class TakeTest extends AppCompatActivity implements SensorEventListener{
         button.setVisibility(VISIBLE);
 
         editText = findViewById(R.id.editText11);
-
-        Weight =  Integer.parseInt(editText.getText().toString());
-
+        if (formVerfication.intCheck(editText.getText().toString()).toString().equals("false")){
+            Weight = Integer.parseInt(editText.getText().toString());
+        }
+        else{
+            formVerfication.errorFormat();
+        }
     }
 
     public void Temp(View view){
@@ -145,18 +150,27 @@ public class TakeTest extends AppCompatActivity implements SensorEventListener{
         button.setVisibility(VISIBLE);
 
         editText = findViewById(R.id.editText12);
+        if (formVerfication.intCheck(editText.getText().toString()).toString().equals("false")){
 
         Temp =  Integer.parseInt(editText.getText().toString());
-
+        }
+        else{
+            formVerfication.errorFormat();
+        }
     }
 
     public void BP(View view) throws JSONException {
         EditText editText = findViewById(R.id.editText13);
 
         String bp = editText.getText().toString();
-        SYS = Integer.parseInt(bp.substring(0, 3));
-        DYS = Integer.parseInt(bp.substring(4));
+        if (formVerfication.intCheck(editText.getText().toString()).toString().equals("false")){
 
+            SYS = Integer.parseInt(bp.substring(0, 3));
+            DYS = Integer.parseInt(bp.substring(4));
+        }
+        else{
+            formVerfication.errorFormat();
+        }
         HR();
     }
 
@@ -173,9 +187,17 @@ public class TakeTest extends AppCompatActivity implements SensorEventListener{
         obj.put("sys", SYS);
         obj.put("dys", DYS);
 
-
-        intent.putExtra("email", obj.toString());
-        startActivity(intent);
+        if (formVerfication.simpleCheck(Integer.toString(Weight)).toString().equals("true") ||
+                formVerfication.simpleCheck(Integer.toString(Temp)).toString().equals("true") ||
+                formVerfication.simpleCheck(Integer.toString(SYS)).toString().equals("true")||
+                formVerfication.simpleCheck(Integer.toString(DYS)).toString().equals("true"))
+        {
+            formVerfication.error();
+        }
+        else {
+            intent.putExtra("email", obj.toString());
+            startActivity(intent);
+        }
     }
 
 
