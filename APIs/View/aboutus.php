@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" type="text/css" href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/View/css/index.css">
-    <?php include("templates/header.php"); ?>
+    <?php include("templates/header.php"); ?> <!--Include the header template  -->
 </head>
     <body>
-        <?php include("templates/nav.php"); ?>
+        <?php include("templates/nav.php"); ?> <!--Include the nav template  -->
         <h1 style="text-align:center;">About the Project</h1>
         <hr>
         <div class="about">
             <h3>Module Code : CMP400</h3>
-            <h3>Project Name : Implementing improved methods of regional care through the use of IoT, Mobile Devices and Website Applications</h3>
+            <h3>Project Name : Implementing improved methods of regional care through the use of IoT, Mobile Devices and Website Applications</h3> <!--About the website -->
             <h3>Developed By : Aaron Stones</h3>
             <h3>Project Supervisor : Dr Geoffrey Lund</h3>
                 <p>Data entered into this site is purely for academical purposes and is never used within a medical environment.</p>
@@ -43,7 +43,7 @@
         <hr>
 
 
-        <?php include("templates/footer.php"); ?>
+        <?php include("templates/footer.php"); ?> <!--Include the footer template  -->
     </body>
 </html>
 

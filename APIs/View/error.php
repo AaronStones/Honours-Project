@@ -11,7 +11,7 @@
 <div class="container d-flex h-100 w-100" role="main">
 	<div class="row align-items-center h-100 w-100">
 		<div class="span6 text-center mx-auto mt-5">
-			<p>Uh oh, looks like something went wrong...</p>
+			<p>Uh oh, looks like something went wrong...</p> <!--There is an error and the user will be directed here-->
 			<p><a class="btn btn-success" href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/View/index">Go to Home page</a> or <a class="btn btn-success" href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/View/support">Go to Support page</a></p>
 		</div>
 	</div>

@@ -40,7 +40,7 @@ public class TakeTest extends AppCompatActivity implements SensorEventListener{
     String doctorName;
     String email;
 
-    FormVerfication formVerfication;
+    FormVerfication formCheck = new FormVerfication(this);
 
     int count = 0;
     int SYS;
@@ -134,11 +134,11 @@ public class TakeTest extends AppCompatActivity implements SensorEventListener{
         button.setVisibility(VISIBLE);
 
         editText = findViewById(R.id.editText11);
-        if (formVerfication.intCheck(editText.getText().toString()).toString().equals("false")){
+        if (Boolean.toString(formCheck.intCheck(editText.getText().toString())).equals("false")){
             Weight = Integer.parseInt(editText.getText().toString());
         }
         else{
-            formVerfication.errorFormat();
+            formCheck.errorFormat();
         }
     }
 
@@ -150,12 +150,12 @@ public class TakeTest extends AppCompatActivity implements SensorEventListener{
         button.setVisibility(VISIBLE);
 
         editText = findViewById(R.id.editText12);
-        if (formVerfication.intCheck(editText.getText().toString()).toString().equals("false")){
+        if (Boolean.toString(formCheck.intCheck(editText.getText().toString())).equals("false")){
 
         Temp =  Integer.parseInt(editText.getText().toString());
         }
         else{
-            formVerfication.errorFormat();
+            formCheck.errorFormat();
         }
     }
 
@@ -163,13 +163,13 @@ public class TakeTest extends AppCompatActivity implements SensorEventListener{
         EditText editText = findViewById(R.id.editText13);
 
         String bp = editText.getText().toString();
-        if (formVerfication.intCheck(editText.getText().toString()).toString().equals("false")){
+        if (Boolean.toString(formCheck.intCheck(editText.getText().toString())).equals("false")){
 
             SYS = Integer.parseInt(bp.substring(0, 3));
             DYS = Integer.parseInt(bp.substring(4));
         }
         else{
-            formVerfication.errorFormat();
+            formCheck.errorFormat();
         }
         HR();
     }
@@ -187,12 +187,12 @@ public class TakeTest extends AppCompatActivity implements SensorEventListener{
         obj.put("sys", SYS);
         obj.put("dys", DYS);
 
-        if (formVerfication.simpleCheck(Integer.toString(Weight)).toString().equals("true") ||
-                formVerfication.simpleCheck(Integer.toString(Temp)).toString().equals("true") ||
-                formVerfication.simpleCheck(Integer.toString(SYS)).toString().equals("true")||
-                formVerfication.simpleCheck(Integer.toString(DYS)).toString().equals("true"))
+        if (Boolean.toString(formCheck.simpleCheck(Integer.toString(Weight))).equals("true") ||
+                Boolean.toString(formCheck.simpleCheck(Integer.toString(Temp))).equals("true") ||
+                Boolean.toString(formCheck.simpleCheck(Integer.toString(SYS))).equals("true")||
+                Boolean.toString(formCheck.simpleCheck(Integer.toString(DYS))).equals("true"))
         {
-            formVerfication.error();
+            formCheck.error();
         }
         else {
             intent.putExtra("email", obj.toString());

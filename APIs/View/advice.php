@@ -2,7 +2,7 @@
 <?php
 session_start();
 if (isset($_SESSION['userData']) == false){
-    header('Location: '.'https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/View/login.php');
+    header('Location: '.'https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/View/login.php'); //check the user is logged in
 }
 ?>
 <html lang="en">
@@ -11,7 +11,7 @@ if (isset($_SESSION['userData']) == false){
     <?php include("templates/header.php"); ?>
 </head>
     <body>
-        <?php include("templates/nav.php"); ?>
+        <?php include("templates/nav.php"); ?> <!--Include the templates  -->
 
             <div class="header">
                 <a href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/View/index"><h1>Patient Advice</h1></a>
@@ -19,7 +19,7 @@ if (isset($_SESSION['userData']) == false){
             </div>
 
             <h4>Select a patient to give advice</h4>
-            <form method="post">
+            <form method="post"> <!--Form to go patient advice  -->
 
                 <label for="email">Email</label>
             <input class="form-control" type="text" placeholder="Enter Email" title="Please ensure the email address is valid." name="email" required>   

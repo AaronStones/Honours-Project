@@ -4,7 +4,7 @@
 	$conn =  $db->getConnstring();
 
     
-function adviceDatabase($email) //function to validate a user's login details
+function adviceDatabase($email) //function to get all the advice from the database based on a user's email
 {
     global $conn;
     $sql = $conn->prepare("SELECT * from Advice where email=? ORDER BY Timestamp DESC");
@@ -24,7 +24,7 @@ function adviceDatabase($email) //function to validate a user's login details
 
 }
 
-function sendAdvice($email, $name, $advice){
+function sendAdvice($email, $name, $advice){ //function to store the advice that has been sent to the server
     global $conn;
     $sql = $conn->prepare("INSERT INTO Advice (email, Advice, Doctor) VALUES(?,?,?)");
     $sql->bind_param("sss", $email, $advice, $name);

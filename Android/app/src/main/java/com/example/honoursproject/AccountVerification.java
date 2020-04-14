@@ -26,6 +26,10 @@ public class AccountVerification extends AsyncTask<String,Void,String> {
     String type;
     String Email;
     AlertDialog alertDialog;
+
+    JSONObject arr;
+    String Doctor;
+
     AccountVerification(Context ctx){
 
         context = ctx;
@@ -73,13 +77,17 @@ public class AccountVerification extends AsyncTask<String,Void,String> {
             try {
                 Email = params[1];
                 String Password = params[2];
-                String Doctor = params[3];
+                Doctor = params[3];
+                String mobile = params[8];
+                String name = params[7];
 
-                JSONObject arr=new JSONObject();
+                arr=new JSONObject();
 
                 arr.put("Dementia", params[4]);
                 arr.put("Parkinsons",params[5]);
                 arr.put("Other",params[6]);
+                arr.put("name", name);
+                arr.put("Mobile",mobile);
 
                 String json = arr.toString();
 
@@ -143,18 +151,36 @@ public class AccountVerification extends AsyncTask<String,Void,String> {
 
                 Intent intent = new Intent(context, Account.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
                 intent.putExtra("EXTRA_SESSION_ID", result);
                 context.startActivity(intent);
             }
         }
         if (type.equals("signup")){
             if (result.equals("Success")){
-                alertDialog.setMessage("Account Created Successfully, please log into your new account");
+                String newbie = "true";
+                alertDialog.setMessage("Account Created Successfully");
                 alertDialog.show();
-                Intent intent = new Intent(context, MainActivity.class);
+                Intent intent = new Intent(context, Account.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("emailSignup", Email);
-                context.startActivity(intent);
+                try {
+
+                    JSONObject pack=new JSONObject();
+
+                    pack.put("doctor", Doctor);
+                    pack.put("email", Email);
+                    pack.put("json", arr);
+                    intent.putExtra("EXTRA_SESSION_ID", pack.toString());
+                    intent.putExtra("newAccount", newbie);
+                    context.startActivity(intent);
+                }
+                catch(Exception e){
+
+                }
+            }
+            else{
+                alertDialog.setMessage(result.toString());
+                alertDialog.show();
             }
         }
 

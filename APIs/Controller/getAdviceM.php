@@ -1,13 +1,11 @@
 <?php
-ini_set("display_errors", 1);
-error_reporting(E_ALL);
+
 
 include("../Model/Advice.php");
 
 function getAdvice($email){
-    $check = null;
 
-    return adviceDatabase($email);
+    return adviceDatabase($email); //get advoce for the medical practitioners 
 }
 
 ?>

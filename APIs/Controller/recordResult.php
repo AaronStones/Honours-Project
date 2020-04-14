@@ -1,6 +1,5 @@
 <?php
-ini_set("display_errors", 1);
-error_reporting(E_ALL);
+
 
 include("../Model/Readings.php");
 
@@ -13,9 +12,9 @@ $temp = $_POST["temperature"];
 $hr = $_POST["hr"];
 $dys = $_POST["dys"];
 $sys = $_POST["sys"];
-$doctor = $_POST["doctor"];
+$doctor = $_POST["doctor"]; //recieve data from mobile device
 
-$check = recordReading($email, $doctor, $count, $weight, $temp, $hr, $dys, $sys);
+$check = recordReading($email, $doctor, $count, $weight, $temp, $hr, $dys, $sys); //record the result
 echo $check;
 
 ?>

@@ -1,13 +1,10 @@
 <?php
-ini_set("display_errors", 1);
-error_reporting(E_ALL);
-
 include("../Model/Readings.php");
 
 $check = null;
 
 $email = $_POST["email"];
 
-echo retrieveAll($email);
+echo retrieveAll($email); //retrieve all the results from different patient tests
 
 ?>

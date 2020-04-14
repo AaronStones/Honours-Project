@@ -39,8 +39,7 @@ public class TestResultsWorker extends AsyncTask<String,Void,String>{
     String Email;
     String type;
     String type2;
-    String results;
-    LineChart lineChart;
+
 
     List<String> Result;
     List<String> Time;

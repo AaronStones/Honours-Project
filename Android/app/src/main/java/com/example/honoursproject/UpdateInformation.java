@@ -23,7 +23,7 @@ public class UpdateInformation extends AppCompatActivity {
     Boolean Other;
     Boolean Dementia;
 
-    FormVerfication formVerfication;
+    FormVerfication formCheck = new FormVerfication(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,8 +77,8 @@ public class UpdateInformation extends AppCompatActivity {
             EditText editText = findViewById(R.id.editText3);
 
             Name = editText.getText().toString();
-            if (formVerfication.simpleCheck(Mobile).toString().equals("true")){
-                formVerfication.errorFormat();
+            if (Boolean.toString(formCheck.simpleCheck(Mobile)).equals("true")){
+                formCheck.errorFormat();
             }
             else {
                 JSONObject jsonObject = new JSONObject(json);
@@ -88,14 +88,14 @@ public class UpdateInformation extends AppCompatActivity {
             }
         }
         catch (JSONException e){
-            formVerfication.error();
+            formCheck.error();
             e.printStackTrace();
         }
         String file = json;
 
         String type = "Json";
-        if (formVerfication.simpleCheck(Mobile).toString().equals("true")){
-            formVerfication.error();
+        if (Boolean.toString(formCheck.simpleCheck(Mobile)).equals("true")){
+            formCheck.error();
         }
         else {
             UpdateInformationWorker backgroundWorker = new UpdateInformationWorker(this);
@@ -106,12 +106,12 @@ public class UpdateInformation extends AppCompatActivity {
         String type = "Doctor";
         EditText editText = findViewById(R.id.editText6);
         String doctorName = editText.getText().toString();
-        if (formVerfication.mobileCheck(Mobile).toString().equals("true")){
-            formVerfication.errorFormat();
+        if (Boolean.toString(formCheck.mobileCheck(Mobile)).equals("true")){
+            formCheck.errorFormat();
         }
         else {
-            if (formVerfication.simpleCheck(doctorName).toString().equals("true")) {
-                formVerfication.error();
+            if (Boolean.toString(formCheck.simpleCheck(doctorName)).equals("true")) {
+                formCheck.error();
             } else {
                 UpdateInformationWorker backgroundWorker = new UpdateInformationWorker(this);
                 backgroundWorker.execute(type, doctorName, email, "doctorChange");
@@ -124,8 +124,8 @@ public class UpdateInformation extends AppCompatActivity {
             EditText editText = findViewById(R.id.editText9);
             Mobile = editText.getText().toString();
 
-            if (formVerfication.intCheck(Mobile).toString().equals("true")){
-                formVerfication.errorFormat();
+            if (Boolean.toString(formCheck.intCheck(Mobile)).equals("true")){
+                formCheck.errorFormat();
             }
             else {
 
@@ -142,8 +142,8 @@ public class UpdateInformation extends AppCompatActivity {
         String file = json;
         String type = "Json";
 
-        if (formVerfication.simpleCheck(Mobile).toString().equals("true")){
-            formVerfication.error();
+        if (Boolean.toString(formCheck.simpleCheck(Mobile)).equals("true")){
+            formCheck.error();
         }
         else {
             UpdateInformationWorker backgroundWorker = new UpdateInformationWorker(this);

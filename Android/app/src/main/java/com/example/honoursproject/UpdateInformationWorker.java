@@ -138,6 +138,10 @@ public class UpdateInformationWorker extends AsyncTask<String,Void,String> {
                 alertDialog.setMessage("Your Doctor has been updated");
                 alertDialog.show();
             }
+            else{
+                alertDialog.setMessage("Some of your details have been rejected, Doctor's name wrong");
+                alertDialog.show();
+            }
         }
     }
 

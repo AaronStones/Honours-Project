@@ -30,7 +30,7 @@ function Login($email, $pass) //function to validate a user's login details
 
 }
 
-function retriveAccountResults($email){
+function retriveAccountResults($email){ //retrieves the results for the handshake test only 
         global $conn;
         $sql = $conn->prepare("SELECT * from Results where email=? ORDER BY Timestamp DESC");
         $sql->bind_param("s", $email);
@@ -48,7 +48,7 @@ function retriveAccountResults($email){
         
 }
 
-function LoginM($email, $pass){
+function LoginM($email, $pass){ //login section for the medical professionals
     global $conn;
     $sql = $conn->prepare("SELECT * from Medical where email=? LIMIT 1");
     $sql->bind_param("s", $email);
@@ -72,7 +72,7 @@ function LoginM($email, $pass){
     }
 }
 
-function Name($email, $file) //function to validate a user's login details
+function Name($email, $file) //function to update a user's name
 {
     $file = json_encode($file);
     global $conn;
@@ -89,31 +89,26 @@ function Name($email, $file) //function to validate a user's login details
     }
 }
 
-function Signup($email, $password, $json, $doctor){
+function Signup($email, $password, $json, $doctor){ //sign up function 
 
-    $checkEmail = checkEmail($email);
-    if ($checkEmail == true){
-        return "Account present";
+    $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+    global $conn;
+    $sql = $conn->prepare("INSERT INTO Patients (email, password, jsonData, Doctor) Values(?,?,?,?)");
+    $sql->bind_param("ssss", $email, $passwordHash, $json, $doctor);
+    $sql->execute();
+
+    $affectedRows = $sql->affected_rows;
+    if ($affectedRows == 1) {
+        return "Success";
+    } 
+    else {
+        return "fail";
     }
-    else{
-        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-        global $conn;
-        $sql = $conn->prepare("INSERT INTO Patients (email, password, JSON, Doctor) Values(?,?,?,?)");
-        $sql->bind_param("ssss", $email, $passwordHash, $json, $doctor);
-        $sql->execute();
-
-        $affectedRows = $sql->affected_rows;
-        if ($affectedRows == 1) {
-            return "Success";
-        } 
-        else {
-            return null;
-        }
-    }
-
 }
 
-function checkEmail($email){
+
+
+function checkEmail($email){ //a check to ensure the email has not been used prior to registrations
     global $conn;
     $sql = $conn->prepare("SELECT Primary_Key from Patients where email=? LIMIT 1");
     $sql->bind_param("s", $email);
@@ -124,7 +119,7 @@ function checkEmail($email){
 
 }
 
-function doctorChange($email, $doctor){
+function doctorChange($email, $doctor){ //function to change the user's doctor 
     global $conn;
     $sql = $conn->prepare("UPDATE Patients SET Doctor=? WHERE email=?");
     $sql->bind_param("ss", $doctor, $email);
@@ -139,30 +134,60 @@ function doctorChange($email, $doctor){
     }
 }
 
-    
-    function registerUser($email, $password){
-            global $conn;
-      
-     
-            $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+function doctorCheck($doctor){ //check to ensure the doctor exists 
+    global $conn;
+    $sql = $conn->prepare("SELECT * from Medical where name=?");
+    $sql->bind_param("s", $doctor);
+    $sql->execute();
 
-            global $conn;
-
-            $name = "Aaron Stones";
-
-            $sql = $conn->prepare("INSERT INTO Medical (email, name, password) Values(?,?,?)");
-            $sql->bind_param("sss", $email, $name, $passwordHash);
-            $sql->execute();
-
-            $affectedRows = $sql->affected_rows;
-            if ($affectedRows == 1) {
-                return "Success";
-            } 
-            else {
-                return null;
-            }
-        
+    $count = 0;
+    while ($sql->fetch()) {
+        $count++;
     }
+    if ($count > 0){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+
+function emailCheck($email){ //check to see if the email is already in use 
+    global $conn;
+    $sql = $conn->prepare("SELECT * from Patients where email=?");
+    $sql->bind_param("s", $email);
+    $sql->execute();
+
+    $count = 0;
+    while ($sql->fetch()) {
+        $count++;
+    }
+    if ($count > 0){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+
+    
+function registerUser($email, $password, $name){ //registers a medical professional
+    global $conn;
+    $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+
+    $sql = $conn->prepare("INSERT INTO Medical (email, name, password) Values(?,?,?)");
+    $sql->bind_param("sss", $email, $name, $passwordHash);
+    $sql->execute();
+
+    $affectedRows = $sql->affected_rows;
+    if ($affectedRows == 1) {
+        return "Success";
+    } 
+    else {
+        return null;
+    }
+        
+}
 
 
 ?>

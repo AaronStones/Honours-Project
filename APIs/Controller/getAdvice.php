@@ -1,6 +1,5 @@
 <?php
-ini_set("display_errors", 1);
-error_reporting(E_ALL);
+
 
 include("../Model/Advice.php");
 
@@ -8,5 +7,6 @@ $check = null;
 
 $email = $_POST["email"];
 
-echo adviceDatabase($email);
+echo adviceDatabase($email); //returns all the advice for that patient based in their email
+
 ?>

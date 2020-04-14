@@ -40,8 +40,16 @@ public class SignUp extends AppCompatActivity {
         email = findViewById(R.id.editText7);
         email2 = findViewById(R.id.editText);
 
+        EditText Mobile = findViewById(R.id.editText10);
+        EditText Name = findViewById(R.id.editText11);
+
+        String mobile = Mobile.getText().toString();
+        String name = Name.getText().toString();
+
         String Email = email.getText().toString();
         String Email2 = email2.getText().toString();
+
+
 
         password= findViewById(R.id.editText5);
         password2= findViewById(R.id.editText2);
@@ -58,13 +66,13 @@ public class SignUp extends AppCompatActivity {
             Boolean Other = ((CheckBox) findViewById(R.id.CheckBox3)).isChecked();
 
 
-            if (Boolean.toString(checkForm(Doctor)).equals("true")){
+            if (Boolean.toString(checkForm(Doctor)).equals("true") || Boolean.toString(checkForm(mobile)).equals("true") || Boolean.toString(checkForm(name)).equals("true")){
                 formCheck.error();
             }
             else {
 
                 AccountVerification backgroundWorker = new AccountVerification(this);
-                backgroundWorker.execute(type, Email, Password, Doctor, Boolean.toString(Park), Boolean.toString(Dem), Boolean.toString(Other));
+                backgroundWorker.execute(type, Email, Password, Doctor, Boolean.toString(Park), Boolean.toString(Dem), Boolean.toString(Other), name, mobile);
             }
         }
     }

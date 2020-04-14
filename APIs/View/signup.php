@@ -15,6 +15,9 @@
   <form method = "post">
     <label for="email">Email</label>
     <input class="form-control" type="text" placeholder="Enter Email" pattern="^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$" title="Please ensure the email address is valid." name="email" required>
+    <label for="name">Name</label>
+    <input class="form-control" type="text" placeholder="Enter Name" name="name" required>
+    
     <label for="password">Password</label>
     <input class="form-control" type="password" placeholder="Enter Password" pattern="^(?=.*\d)(?=.*[a-zA-Z]).{8,80}$" title="Please ensure the password is 8 characters and contains at least one letter and one number." name="password" required>
     <label for="confirm">Confirm Password</label>
@@ -29,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //get user data
 
   include("../Controller/registerMedical.php");
   
-  $login = registerUsersM( $_POST['email'], $_POST['password']);
+  $login = registerUsersM( $_POST['email'], $_POST['password'], $_POST['name']);
 
   if ($login == null){
     echo "Invalid Entry";

@@ -9,7 +9,15 @@ $check = null;
 $email = $_POST["email"];
 $doctor = $_POST["doctor"];
 
-$check = doctorChange($email, $doctor);
-echo $check;
+$checkDoctor = doctorCheck($doctor); //check the doctor exists
 
+if ($checkDoctor != 1){
+    echo "This doctor does not exist";
+}
+
+else {
+
+    $check = doctorChange($email, $doctor); //doctor exists proceed with the change
+    echo $check;
+}
 ?>

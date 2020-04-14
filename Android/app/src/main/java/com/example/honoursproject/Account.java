@@ -30,9 +30,25 @@ public class Account extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
 
-        setupVariables();
-        getResults();
+        String newAccount;
+        try
 
+        {
+
+            newAccount = getIntent().getStringExtra("newAccount");
+        }
+        catch(Exception e){
+            newAccount = "";
+        }
+
+        setupVariables();
+
+        if (newAccount.equals("true")){
+
+        }
+        else {
+            getResults();
+        }
         TextView Name = findViewById(R.id.textView7);
         Name.setText("Welcome Back : " + Names);
         TextView Doctor = findViewById(R.id.textView6);

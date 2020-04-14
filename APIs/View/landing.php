@@ -2,7 +2,7 @@
 <?php
 session_start();
 if (isset($_SESSION['userData']) == false){
-    header('Location: '.'https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/View/login.php');
+    header('Location: '.'https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/View/login.php'); //check the user is logged in
 }
 ?>
 

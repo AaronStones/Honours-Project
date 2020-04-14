@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ScrollView;
 
 import org.json.JSONObject;
 
@@ -12,7 +13,9 @@ public class speakDoctor extends AppCompatActivity {
     String doctorName;
     String email;
 
-    FormVerfication formVerfication;
+    FormVerfication formCheck = new FormVerfication(this);
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,8 @@ public class speakDoctor extends AppCompatActivity {
 
         messagesWorker backgroundWorker = new messagesWorker(this);
         backgroundWorker.execute(type, email, doctorName);
+
+
     }
 
     public void sendMessage(View view){
@@ -37,8 +42,8 @@ public class speakDoctor extends AppCompatActivity {
         EditText editText = findViewById(R.id.editText4);
         String Message = editText.getText().toString();
 
-        if (formVerfication.simpleCheck(Message).toString().equals("true")){
-            formVerfication.error();
+        if (Boolean.toString(formCheck.simpleCheck(Message)).equals("true")){
+            formCheck.error();
         }
         else {
             messagesWorker backgroundWorker = new messagesWorker(this);

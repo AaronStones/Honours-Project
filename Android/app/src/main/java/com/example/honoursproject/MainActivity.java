@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
         try
 
         {
+
             emailSignup = getIntent().getStringExtra("emailSignup");
         }
         catch(Exception e){
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        EditText editText = (EditText)findViewById(R.id.editText);
+        EditText editText = findViewById(R.id.editText);
         editText.setText(emailSignup);
     }
     public void Login(View view){

@@ -9,7 +9,7 @@
 
             <div class="header">
                 <a href="https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/View/index"><h1>Honours Project</h1></a>
-                <h3>Aaron Stones | BSc Computing | Abertay University</h3>
+                <h3>Aaron Stones | BSc Computing | Abertay University</h3> <!-- A simple page where the user is directed to view the website-->
             </div>
 
         <?php include("templates/footer.php"); ?>

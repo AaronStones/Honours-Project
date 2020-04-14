@@ -4,7 +4,7 @@
 	$conn =  $db->getConnstring();
 
 
-    function recordReading($email, $doctor, $count, $weight, $temp, $hr, $dys, $sys){
+    function recordReading($email, $doctor, $count, $weight, $temp, $hr, $dys, $sys){ //store a reading indexed by a user's email
         global $conn;
         $value = 0;
         $sql = $conn->prepare("INSERT INTO Results (email, Doctor, Result, HR, Weight, Temperature, Sys, Dys) Values(?,?,?,?,?,?,?,?)");
@@ -21,7 +21,7 @@
             }
     }
 
-    function retrieveResults($email){
+    function retrieveResults($email){ //get all the handshake results from a table based on the user's email
         global $conn;
         $sql = $conn->prepare("SELECT * from Results where email=? ORDER BY Timestamp DESC");
         $sql->bind_param("s", $email);
@@ -38,7 +38,7 @@
         return json_encode($json);
     }
 
-    function retrieveAll($email){
+    function retrieveAll($email){ //retrieve all the results from a server 
         global $conn;
         $sql = $conn->prepare("SELECT * from Results where email=? ORDER BY Timestamp DESC");
         $sql->bind_param("s", $email);
@@ -60,7 +60,7 @@
         return json_encode($json);
     }
 
-    function retrieveBPM($email){
+    function retrieveBPM($email){ //retrieve all the heart rate measures
         global $conn;
         $sql = $conn->prepare("SELECT * from Results where email=? ORDER BY Timestamp DESC");
         $sql->bind_param("s", $email);
@@ -77,7 +77,7 @@
         return json_encode($json);
     }
 
-    function retrieveWeight($email){
+    function retrieveWeight($email){ //retrieve all the weight measures
         global $conn;
         $sql = $conn->prepare("SELECT * from Results where email=? ORDER BY Timestamp DESC");
         $sql->bind_param("s", $email);
@@ -94,7 +94,7 @@
         return json_encode($json);
     }
 
-    function retrieveTemp($email){
+    function retrieveTemp($email){ //retrieve all the temperature measures
         global $conn;
         $sql = $conn->prepare("SELECT * from Results where email=? ORDER BY Timestamp DESC");
         $sql->bind_param("s", $email);
@@ -111,7 +111,7 @@
         return json_encode($json);
     }
 
-    function retrieveSys($email){
+    function retrieveSys($email){ //retireve all the systolic bp readings 
         global $conn;
         $sql = $conn->prepare("SELECT * from Results where email=? ORDER BY Timestamp DESC");
         $sql->bind_param("s", $email);
@@ -127,7 +127,7 @@
         }
         return json_encode($json);
     }
-    function retrieveDys($email){
+    function retrieveDys($email){ //retireve all the dystolic bp readings 
         global $conn;
         $sql = $conn->prepare("SELECT * from Results where email=? ORDER BY Timestamp DESC");
         $sql->bind_param("s", $email);

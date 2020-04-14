@@ -9,8 +9,21 @@ $password = $_POST["password"];
 $json = $_POST["json"];
 $doctor = $_POST["doctor"];
 
-$check = Signup($email, $password, $json, $doctor);
-echo $check;
+$checkDoctor = doctorCheck($doctor);
 
+if ($checkDoctor != 1){
+    echo "This doctor does not exist";
+}
+
+$emailCheck = emailCheck($email);
+
+if ($emailCheck == 1){
+    echo "This email has already been taken";
+}
+
+else{
+    $check = Signup($email, $password, $json, $doctor);
+    echo $check;
+}
 
 ?>

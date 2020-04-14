@@ -4,10 +4,10 @@
 	$conn =  $db->getConnstring();
 
     
-function retrieveMessages($email)
+function retrieveMessages($email) //retrieve all the messages in ascending order based on a user's email
 {
     global $conn;
-    $sql = $conn->prepare("SELECT * from Messages where email=? ORDER BY Timestamp DESC");
+    $sql = $conn->prepare("SELECT * from Messages where email=? ORDER BY Timestamp ASC");
     $sql->bind_param("s", $email);
     $sql->execute();
     $sql->bind_result($email, $doctor, $message, $time);
@@ -26,7 +26,7 @@ function retrieveMessages($email)
 
 }
 
-function sendMessageP($email, $message){
+function sendMessageP($email, $message){ //send a messade to the database to be later processed by the server
     global $conn;
     $value = 0;
     $sql = $conn->prepare("INSERT INTO Messages (email, Doctor, Message) Values(?,?,?)");

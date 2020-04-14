@@ -4,7 +4,7 @@ if (isset($_SESSION['userData']) == false){
     header('Location: '.'https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/View/login.php');
 }
 
-$Details = json_decode($_SESSION['userData']);
+$Details = json_decode($_SESSION['userData']);  //get and decode the sessions data
 ?>
 
 <!DOCTYPE html>

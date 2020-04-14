@@ -22,7 +22,7 @@ if (isset($_SESSION['userData']) == false){
 
                 <label for="email">Email</label>
             <input class="form-control" type="text" placeholder="Enter Email" title="Please ensure the email address is valid." name="email" required>   
-            <button id="submit" type="submit" class="form-control btn btn-success mt-3">Select Patient</button>
+            <button id="submit" type="submit" class="form-control btn btn-success mt-3">Select Patient</button> <!--Select a patient  -->
 
             </form>
             <?php
@@ -53,7 +53,7 @@ if (isset($_SESSION['userData']) == false){
                     $dataPoints3 = json_decode($Sys);
                     $dataPoints4 = json_decode($Dys);
                     $dataPoints5 = json_decode($weight);
-                    $dataPoints6 = json_decode($temperature);
+                    $dataPoints6 = json_decode($temperature); //get all the different results
                 }
             }
 
@@ -85,7 +85,7 @@ if (isset($_SESSION['userData']) == false){
                 },
                 data: [{
                     type: "line",
-                    dataPoints: <?php echo json_encode($dataPoints2, JSON_NUMERIC_CHECK); ?>
+                    dataPoints: <?php echo json_encode($dataPoints2, JSON_NUMERIC_CHECK); ?> //Canvas.JS functions for displaying graphs of data
                 }]
             });
             chart.render();
