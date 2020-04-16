@@ -14,10 +14,13 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 
 import org.json.JSONObject;
+
+import static android.view.View.VISIBLE;
 
 
 public class Account extends AppCompatActivity {
@@ -37,23 +40,25 @@ public class Account extends AppCompatActivity {
         setContentView(R.layout.activity_account);
 
         String newAccount;
-        try
-
-        {
-
-            newAccount = getIntent().getStringExtra("newAccount"); //check if a new account has been created
-        }
-        catch(Exception e){
-            newAccount = "";
-        }
 
         setupVariables();
 
-        if (newAccount.equals("true")){
+        try
+
+        {
+            newAccount = getIntent().getStringExtra("newAccount"); //check if a new account has been created
+
+            if (newAccount.equals("true")){
+                Button button = findViewById(R.id.button2);
+                button.setEnabled(false);
+
+            }
 
         }
-        else {
-            getResults();//new account hasn't been created fetch existing results
+        catch(Exception e){
+            newAccount = "";
+            getResults();
+            Log.e("new account", "user does not possess a new account");
         }
         TextView Name = findViewById(R.id.textView7);
         Name.setText("Welcome Back : " + Names);

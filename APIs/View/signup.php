@@ -42,12 +42,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //get user data
   
   $login = registerUsersM( $_POST['email'], $_POST['password'], $_POST['name']);
 
-  if ($login == null){
-    echo "Invalid Entry";
-  }
-  else {
+  if ($login != "success"){
     echo "Success";
     header('Location: '.'https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/View/login.php');
+  }
+  else {
+    echo $login;
   }
     
 }
