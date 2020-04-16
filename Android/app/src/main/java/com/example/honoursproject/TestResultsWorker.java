@@ -1,3 +1,9 @@
+//Project: Honours Project 2020
+//Author: Aaron Stones
+//Date: 10/04/2020
+//Purpose: to show the benefits of collecting lots of data about a patient
+//using different devices and tests
+
 package com.example.honoursproject;
 
 import android.app.Activity;
@@ -47,19 +53,19 @@ public class TestResultsWorker extends AsyncTask<String,Void,String>{
     List<String> Weight ;
     List<String> Temp ;
     List<String> Sys ;
-    List<String> Dys;
+    List<String> Dys; //setup global varibales
 
 
     TestResultsWorker(Context ctx){
 
         context = ctx;
-    }
+    } //get the context from previous activity
 
     protected String doInBackground(String... params) {
         type = params[0];
         type2 = params[1];
         if (type.equals("getResults")){
-            String urlAdvice = "https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/Controller/getResults.php";
+            String urlAdvice = "https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/Controller/getResults.php"; //api location
             Email = params[2];
             try{
                 URL url = new URL(urlAdvice);
@@ -69,7 +75,7 @@ public class TestResultsWorker extends AsyncTask<String,Void,String>{
                 httpURLConnection.setDoInput(true);
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-                String post_data = URLEncoder.encode("email", "UTF-8")+"="+ URLEncoder.encode(Email, "UTF-8");
+                String post_data = URLEncoder.encode("email", "UTF-8")+"="+ URLEncoder.encode(Email, "UTF-8"); //encode the user's email
 
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
@@ -79,14 +85,14 @@ public class TestResultsWorker extends AsyncTask<String,Void,String>{
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
                 String result = "";
                 String line="";
-                while ((line = bufferedReader.readLine()) != null){
+                while ((line = bufferedReader.readLine()) != null){ //retrieve the results
                     result += line;
                 }
                 bufferedReader.close();
                 inputStream.close();
                 httpURLConnection.disconnect();
                 return result;
-            } catch (MalformedURLException e) {
+            } catch (MalformedURLException e) { //catch any errors
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -104,10 +110,10 @@ public class TestResultsWorker extends AsyncTask<String,Void,String>{
     @Override
     protected void onPostExecute(String result) {
         JSONArray obj = null;
-        if (type2.equals("getResults")) {
+        if (type2.equals("getResults")) { 
             try
             {
-                obj = new JSONArray(result);
+                obj = new JSONArray(result); // make a JSONArray out of the json results retruned by the server
 
             }
             catch (JSONException e)
@@ -120,7 +126,7 @@ public class TestResultsWorker extends AsyncTask<String,Void,String>{
             Temp = new ArrayList<String>(obj.length());
             Sys = new ArrayList<String>(obj.length());
             Dys = new ArrayList<String>(obj.length());
-            Time = new ArrayList<String>(obj.length());
+            Time = new ArrayList<String>(obj.length()); //set the lists to the size of the JSON string returned
 
             for (int i = 0; i < obj.length(); ++i) {
                 try {
@@ -132,20 +138,20 @@ public class TestResultsWorker extends AsyncTask<String,Void,String>{
                     Temp.add((String) (o.getString("temp")));
                     Sys.add((String) (o.getString("sys")));
                     Dys.add((String) (o.getString("dys")));
-                    Time.add((String) (o.getString("time")));
+                    Time.add((String) (o.getString("time"))); //add each value individually 
                 }
                 catch (JSONException e) {
                 }
 
             }
 
-            setupMultiGraphs();
+            setupMultiGraphs(); //setup the graphs
 
 
 
         }
 
-        if (type2.equals("retrieveResults")) {
+        if (type2.equals("retrieveResults")) { //for the handshake test on the main account activity (uses same functionality as previous)
             try
             {
                 obj = new JSONArray(result);
@@ -193,14 +199,14 @@ public class TestResultsWorker extends AsyncTask<String,Void,String>{
         LineChart Weights = ((Activity)context).findViewById(R.id.Weight);
         LineChart Temperature = ((Activity)context).findViewById(R.id.Temp);
         LineChart Systolic = ((Activity)context).findViewById(R.id.Sys);
-        LineChart Dystolic = ((Activity)context).findViewById(R.id.Dys);
+        LineChart Dystolic = ((Activity)context).findViewById(R.id.Dys); //find the locations of each graph
 
         setupGraphs(HeartR, HR, "Heart Rate BPM");
         setupGraphs(Hand, Result, "Hand Shake Result");
         setupGraphs(Weights, Weight, "Weight Kg");
         setupGraphs(Temperature, Temp, "Temperature Degrees Celsius");
         setupGraphs(Systolic, Sys, "Systolic BP");
-        setupGraphs(Dystolic, Dys, "Dystolic BP");
+        setupGraphs(Dystolic, Dys, "Dystolic BP"); //enter all data into the graphs
 
 
 
@@ -210,15 +216,16 @@ public class TestResultsWorker extends AsyncTask<String,Void,String>{
     private void setupGraphs(LineChart linechart, List<String> list, String type){
 
         ArrayList<String> xAXES = new ArrayList<>();
-        ArrayList<Entry> yAXEScos = new ArrayList<>();
+        ArrayList<Entry> yAXEScos = new ArrayList<>(); //x and y value data structures
 
-        int numDataPoints = list.size();
+        int numDataPoints = list.size(); //get the size of the data for the graphs
+
         for(int i=0;i<numDataPoints;i++){
             Float cosFunction = Float.parseFloat(list.get(i));
 
             yAXEScos.add(new Entry(cosFunction,i));
 
-            xAXES.add(i, Time.get(i));
+            xAXES.add(i, Time.get(i)); //add the values to the x and y axes from the lists
         }
 
 
@@ -226,14 +233,14 @@ public class TestResultsWorker extends AsyncTask<String,Void,String>{
 
         for(int i=0; i<xAXES.size();i++){
             xaxes[i] = String.valueOf(xAXES.get(i));
-        }
+        } //convert the xaxes to strings (needed for these type of graphs)
 
 
         ArrayList<ILineDataSet> lineDataSets = new ArrayList<>();
 
         LineDataSet lineDataSet1 = new LineDataSet(yAXEScos,type);
         lineDataSet1.setDrawCircles(false);
-        lineDataSet1.setColor(Color.BLUE);
+        lineDataSet1.setColor(Color.BLUE); //set colours (blue historic colour of the nhs)
 
 
         lineDataSets.add(lineDataSet1);
@@ -241,7 +248,7 @@ public class TestResultsWorker extends AsyncTask<String,Void,String>{
 
         linechart.setData(new LineData(xaxes, lineDataSets));
 
-        linechart.setVisibleXRangeMaximum(65f);
+        linechart.setVisibleXRangeMaximum(65f); //set the visibility
     }
 
 

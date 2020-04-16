@@ -13,22 +13,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        String emailSignup;
-        try
 
-        {
-
-            emailSignup = getIntent().getStringExtra("emailSignup");
-        }
-        catch(Exception e){
-            emailSignup = "";
-        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        EditText editText = findViewById(R.id.editText);
-        editText.setText(emailSignup);
+
     }
-    public void Login(View view){
+    public void Login(View view){ //get the login details and send them to a back ground worker
         email= findViewById(R.id.editText);
         password= findViewById(R.id.editText2);
         String Password = password.getText().toString();
@@ -38,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         backgroundWorker.execute(type, Email, Password);
     }
 
-    public void SignUp(View view){
+    public void SignUp(View view){ //redirect to the signup page
         Intent intent = new Intent(this, SignUp.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         this.startActivity(intent);

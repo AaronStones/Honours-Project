@@ -50,10 +50,6 @@ public class Measure extends AppCompatActivity implements SurfaceHolder.Callback
 
     private static TYPE currentType = TYPE.GREEN;
 
-    public static TYPE getCurrent() {
-        return currentType;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +57,7 @@ public class Measure extends AppCompatActivity implements SurfaceHolder.Callback
 
         email = getIntent().getStringExtra("email");
 
-        SurfaceView = (SurfaceView) findViewById(R.id.preview);
+        SurfaceView = findViewById(R.id.preview);
         SurfaceHolder = SurfaceView.getHolder();
         SurfaceHolder.addCallback(this);
         SurfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
@@ -123,7 +119,6 @@ public class Measure extends AppCompatActivity implements SurfaceHolder.Callback
     }
 
     public void setCameraDisplayOrientation(android.hardware.Camera camera) {
-        Camera.Parameters parameters = camera.getParameters();
         android.hardware.Camera.CameraInfo camInfo = new android.hardware.Camera.CameraInfo();
         android.hardware.Camera.getCameraInfo(0, camInfo);
 

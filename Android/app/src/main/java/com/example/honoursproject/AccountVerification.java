@@ -1,3 +1,8 @@
+//Project: Honours Project 2020
+//Author: Aaron Stones
+//Date: 10/04/2020
+//Purpose: to show the benefits of collecting lots of data about a patient
+//using different devices and tests
 package com.example.honoursproject;
 
 import android.app.AlertDialog;
@@ -28,9 +33,9 @@ public class AccountVerification extends AsyncTask<String,Void,String> {
     AlertDialog alertDialog;
 
     JSONObject arr;
-    String Doctor;
+    String Doctor; //setup data structures
 
-    AccountVerification(Context ctx){
+    AccountVerification(Context ctx){ //get the context
 
         context = ctx;
     }
@@ -38,8 +43,8 @@ public class AccountVerification extends AsyncTask<String,Void,String> {
     protected String doInBackground(String... params) {
         type = params[0];
         String login_url = "https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/Controller/Login.php";
-        String signup_url = "https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/Controller/Signup.php";
-        if (type.equals("login")){
+        String signup_url = "https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/Controller/Signup.php"; //store locations of the web API's
+        if (type.equals("login")){ //type is login use that location
             try {
                 Email = params[1];
                 String Password = params[2];
@@ -51,7 +56,7 @@ public class AccountVerification extends AsyncTask<String,Void,String> {
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
                 String post_data = URLEncoder.encode("user_name", "UTF-8")+"="+ URLEncoder.encode(Email, "UTF-8")+"&"
-                        +URLEncoder.encode("password","UTF-8")+"="+URLEncoder.encode(Password,"UTF-8");
+                        +URLEncoder.encode("password","UTF-8")+"="+URLEncoder.encode(Password,"UTF-8"); //encode the login parameters
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
                 bufferedWriter.close();
@@ -59,13 +64,13 @@ public class AccountVerification extends AsyncTask<String,Void,String> {
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
                 String result = "";
-                String line="";
-                while ((line = bufferedReader.readLine()) != null){
+                String line;
+                while ((line = bufferedReader.readLine()) != null){ //get the reults
                     result += line;
                 }
                 bufferedReader.close();
                 inputStream.close();
-                httpURLConnection.disconnect();
+                httpURLConnection.disconnect(); //disconnect the mobile app from the api
                 return result;
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -73,7 +78,7 @@ public class AccountVerification extends AsyncTask<String,Void,String> {
                 e.printStackTrace();
             }
         }
-        if (type.equals("signup")){
+        if (type.equals("signup")){ // type is signup
             try {
                 Email = params[1];
                 String Password = params[2];
@@ -89,7 +94,7 @@ public class AccountVerification extends AsyncTask<String,Void,String> {
                 arr.put("name", name);
                 arr.put("Mobile",mobile);
 
-                String json = arr.toString();
+                String json = arr.toString(); //sort all the necessary strings etc
 
 
                 URL url = new URL(signup_url);
@@ -104,7 +109,7 @@ public class AccountVerification extends AsyncTask<String,Void,String> {
 
                         +URLEncoder.encode("json","UTF-8")+"="+URLEncoder.encode(json,"UTF-8")+"&"
 
-                        +URLEncoder.encode("doctor","UTF-8")+"="+URLEncoder.encode(Doctor,"UTF-8");
+                        +URLEncoder.encode("doctor","UTF-8")+"="+URLEncoder.encode(Doctor,"UTF-8"); //encode all necessary string
 
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
@@ -114,12 +119,12 @@ public class AccountVerification extends AsyncTask<String,Void,String> {
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
                 String result = "";
                 String line="";
-                while ((line = bufferedReader.readLine()) != null){
+                while ((line = bufferedReader.readLine()) != null){ //fetch the result
                     result += line;
                 }
                 bufferedReader.close();
                 inputStream.close();
-                httpURLConnection.disconnect();
+                httpURLConnection.disconnect(); //close connections
                 return result;
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -143,7 +148,7 @@ public class AccountVerification extends AsyncTask<String,Void,String> {
     @Override
     protected void onPostExecute(String result) {
         if (type.equals("login")) {
-            if (result.equals("Incorrect credentials, please try again") == true) {
+            if (result.equals("Incorrect credentials, please try again") == true) { //user has entered an incorrect login
                 alertDialog.setMessage("Incorrect credentials, please try again");
                 alertDialog.show();
             }
@@ -152,12 +157,12 @@ public class AccountVerification extends AsyncTask<String,Void,String> {
                 Intent intent = new Intent(context, Account.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-                intent.putExtra("EXTRA_SESSION_ID", result);
+                intent.putExtra("EXTRA_SESSION_ID", result); //login correct redirect the user
                 context.startActivity(intent);
             }
         }
         if (type.equals("signup")){
-            if (result.equals("Success")){
+            if (result.equals("Success")){ //user has entered correct criteria
                 String newbie = "true";
                 alertDialog.setMessage("Account Created Successfully");
                 alertDialog.show();
@@ -170,7 +175,7 @@ public class AccountVerification extends AsyncTask<String,Void,String> {
                     pack.put("doctor", Doctor);
                     pack.put("email", Email);
                     pack.put("json", arr);
-                    intent.putExtra("EXTRA_SESSION_ID", pack.toString());
+                    intent.putExtra("EXTRA_SESSION_ID", pack.toString()); //pack the relevent details into JSON for new activity
                     intent.putExtra("newAccount", newbie);
                     context.startActivity(intent);
                 }
@@ -180,7 +185,7 @@ public class AccountVerification extends AsyncTask<String,Void,String> {
             }
             else{
                 alertDialog.setMessage(result.toString());
-                alertDialog.show();
+                alertDialog.show(); //user has entered incorrect details
             }
         }
 

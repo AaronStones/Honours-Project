@@ -1,3 +1,8 @@
+//Project: Honours Project 2020
+//Author: Aaron Stones
+//Date: 10/04/2020
+//Purpose: to show the benefits of collecting lots of data about a patient
+//using different devices and tests
 package com.example.honoursproject;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,14 +27,14 @@ public class DoctorsAdvice extends AppCompatActivity {
     }
     private void setupVariable(){
         email = getIntent().getStringExtra("email");
-        doctorName = getIntent().getStringExtra("doctor");
+        doctorName = getIntent().getStringExtra("doctor"); //get the email and doctor name from previous intent
     }
 
     private void getAdvice(){
         String type = "Advice";
 
         DoctorsAdviceWorker backgroundWorker = new DoctorsAdviceWorker(this);
-        backgroundWorker.execute(type, email);
+        backgroundWorker.execute(type, email); //start a new back ground worker for the advice activity
 
     }
 

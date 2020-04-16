@@ -1,3 +1,11 @@
+//Project: Honours Project 2020
+//Author: Aaron Stones
+//Date: 10/04/2020
+//Purpose: to show the benefits of collecting lots of data about a patient
+//using different devices and tests
+
+
+
 package com.example.honoursproject;
 
 import android.app.Activity;
@@ -37,18 +45,18 @@ public class messagesWorker extends AsyncTask<String,Void,String> {
     String Email;
     String type;
     String message;
-    String docName;
+    String docName; //Setup Global variables
 
     messagesWorker(Context ctx){
 
-        context = ctx;
+        context = ctx; //get the context from main activity
     }
 
     protected String doInBackground(String... params) {
         type = params[0];
         if (params[0].equals("getMessages")){
             docName = params[2];
-            String urlAdvice = "https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/Controller/getMessages.php";
+            String urlAdvice = "https://mayar.abertay.ac.uk/~1600964/Honours-Project/Android/APIs/Controller/getMessages.php"; //location of the api
             Email = params[1];
             try{
                 URL url = new URL(urlAdvice);
@@ -58,7 +66,7 @@ public class messagesWorker extends AsyncTask<String,Void,String> {
                 httpURLConnection.setDoInput(true);
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-                String post_data = URLEncoder.encode("email", "UTF-8")+"="+ URLEncoder.encode(Email, "UTF-8");
+                String post_data = URLEncoder.encode("email", "UTF-8")+"="+ URLEncoder.encode(Email, "UTF-8"); //attach relavent parameters for API to work
 
                 bufferedWriter.write(post_data);
                 bufferedWriter.flush();
@@ -68,14 +76,14 @@ public class messagesWorker extends AsyncTask<String,Void,String> {
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream,"iso-8859-1"));
                 String result = "";
                 String line="";
-                while ((line = bufferedReader.readLine()) != null){
+                while ((line = bufferedReader.readLine()) != null){ //get the results from the api
                     result += line;
                 }
                 bufferedReader.close();
                 inputStream.close();
                 httpURLConnection.disconnect();
                 return result;
-            } catch (MalformedURLException e) {
+            } catch (MalformedURLException e) { //error catcher
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -129,12 +137,12 @@ public class messagesWorker extends AsyncTask<String,Void,String> {
 
     @Override
     protected void onPostExecute(String result) {
-        TextView txtView = (TextView) ((Activity)context).findViewById(R.id.textView12);
+        TextView txtView = (TextView) ((Activity)context).findViewById(R.id.textView12); //find the textview where we will start to manipulate the data
         JSONArray obj = null;
-        if (type.equals("getMessages")) {
+        if (type.equals("getMessages")) { //if we are getting messages
             try
             {
-                obj = new JSONArray(result);
+                obj = new JSONArray(result); //try and set a new array for the result of the api
 
             }
             catch (JSONException e)
@@ -143,14 +151,14 @@ public class messagesWorker extends AsyncTask<String,Void,String> {
             }
             List<String> Message = new ArrayList<String>(obj.length());
             List<Integer> Doctor = new ArrayList<Integer>(obj.length());
-            List<String> Time = new ArrayList<String>(obj.length());
+            List<String> Time = new ArrayList<String>(obj.length()); //create new lists for the different types of results from api
 
             for (int i = 0; i < obj.length(); ++i) {
                 try {
                     JSONObject o = obj.getJSONObject(i);
                     Message.add((String) (o.getString("message")));
                     Doctor.add((Integer) (o.getInt("doctor")));
-                    Time.add((String) (o.getString("time")));
+                    Time.add((String) (o.getString("time"))); //add to the list arrays each piece of data arrays
                 }
                 catch (JSONException e) {
                 }
@@ -158,7 +166,7 @@ public class messagesWorker extends AsyncTask<String,Void,String> {
             }
             for (int i = 0; i< obj.length();i++){
 
-                if (Doctor.get(i) == 1){
+                if (Doctor.get(i) == 1){ //if the message is from a doctor then set the colour scheme to blue and white
                     message = "\t\t\t\t\t\tDr: " + Message.get(i) + "\n\n\n";
                     SpannableStringBuilder ssb = new SpannableStringBuilder(message);
 
@@ -171,7 +179,7 @@ public class messagesWorker extends AsyncTask<String,Void,String> {
                     txtView.append(ssb);
                 }
                 else{
-                    message = "\t" + Message.get(i) + "\t\n\n";
+                    message = "\t" + Message.get(i) + "\t\n\n"; //the message must be from a patient so set the messages to green and white also indent to the right
 
                     SpannableStringBuilder ssb = new SpannableStringBuilder(message);
 

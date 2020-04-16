@@ -1,3 +1,9 @@
+//Project: Honours Project 2020
+//Author: Aaron Stones
+//Date: 10/04/2020
+//Purpose: to show the benefits of collecting lots of data about a patient
+//using different devices and tests
+
 package com.example.honoursproject;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,7 +27,7 @@ public class UpdateInformation extends AppCompatActivity {
     String Mobile;
     Boolean Parkinsons;
     Boolean Other;
-    Boolean Dementia;
+    Boolean Dementia; //setup globals
 
     FormVerfication formCheck = new FormVerfication(this);
 
@@ -30,7 +36,7 @@ public class UpdateInformation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_information);
 
-        setupFields();
+        setupFields(); //set the fields
     }
 
 
@@ -39,12 +45,12 @@ public class UpdateInformation extends AppCompatActivity {
 
         doctorName = getIntent().getStringExtra("doctor");
         email = getIntent().getStringExtra("email");
-        json = getIntent().getStringExtra("json");
+        json = getIntent().getStringExtra("json"); //get data from previous activity
 
         EditText doctor = findViewById(R.id.editText6);
-        doctor.setText(doctorName);
+        doctor.setText(doctorName); //set the doctor field
 
-        try {
+        try { //decode the JSON
             JSONObject userJson = new JSONObject(json);
 
             Mobile = userJson.getString("Mobile");
@@ -71,7 +77,7 @@ public class UpdateInformation extends AppCompatActivity {
         return null;
     }
 
-    public void nameChange(View v ){
+    public void nameChange(View v ){ //change the name for a user
 
         try {
             EditText editText = findViewById(R.id.editText3);
@@ -102,7 +108,7 @@ public class UpdateInformation extends AppCompatActivity {
             backgroundWorker.execute(type, file, email, "nameChange");
         }
     }
-    public void doctorChange(View v ){
+    public void doctorChange(View v ){ //change the doctor for a user
         String type = "Doctor";
         EditText editText = findViewById(R.id.editText6);
         String doctorName = editText.getText().toString();
@@ -119,7 +125,7 @@ public class UpdateInformation extends AppCompatActivity {
         }
     }
 
-    public void mobileChange(View v ){
+    public void mobileChange(View v ){ // change a user's mobile number
         try {
             EditText editText = findViewById(R.id.editText9);
             Mobile = editText.getText().toString();
@@ -138,7 +144,6 @@ public class UpdateInformation extends AppCompatActivity {
         catch (JSONException e){
             e.printStackTrace();
         }
-        Log.d("json",json);
         String file = json;
         String type = "Json";
 
