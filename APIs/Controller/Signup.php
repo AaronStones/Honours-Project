@@ -3,7 +3,7 @@
 //Author: Aaron Stones
 //Date: 10/04/2020
 //Purpose: to show the benefits of collecting lots of data about a patient
-//using different devices and tests
+//using different devices and tests of the different patients
 
 include("../Model/User.php");
 
