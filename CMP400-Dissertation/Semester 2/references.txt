@@ -1,6 +1,6 @@
 https://www.zdnet.com/article/iot-and-the-nhs-why-the-internet-of-things-will-create-a-healthcare-revolution/
 https://www.sabp.nhs.uk/tihm/about
-https://www.england.nhs.uk/ourwork/innovation/test-beds/tihm/
+
 
 
 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3510747/
@@ -26,10 +26,8 @@ in undeveloped regions is expected to minimize errors and improve outcomes [53].
 
 https://www.ft.com/content/1efb95ba-d852-11e6-944b-e7eb37a6aa8e
 https://www.nbcnews.com/mach/science/smartphones-are-changing-medical-care-some-surprising-ways-ncna810561
-https://www.sciencedirect.com/science/article/pii/S027795361830011X
 https://patient.info/doctor/parkinsons-disease-management
 Burnett S, Franklin BD, Moorthy K, et al How reliable are clinical systems in the UK NHS? A study of seven NHS organisations BMJ Quality & Safety 2012;21:466-472.
-https://image.slidesharecdn.com/smarthome-170303034202/95/smart-home-environment-using-iot-8-638.jpg?cb=1488512587
 https://www.statista.com/statistics/271851/smartphone-owners-in-the-united-kingdom-uk-by-age/
 http://www.isatafrica.com/solutions/tele-medicine
 https://www.kingsfund.org.uk/publications/articles/nhs-waiting-times
@@ -37,3 +35,4 @@ https://www.theguardian.com/education/2019/dec/10/next-nhs-staff-shortages-will-
 https://pdfs.semanticscholar.org/6e44/661fd82573c25c9085dd3c619e6e126aac76.pdf
 https://www.theguardian.com/society/2019/nov/14/ae-waiting-times-in-england-hit-worst-ever-level
 https://www.theguardian.com/society/2020/feb/23/bed-blocking-highest-since-2017-hospitals-nhs
+https://www.tigermobiles.com/blog/mobile-phone-usage-statistics/
