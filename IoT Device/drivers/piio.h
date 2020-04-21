@@ -1,11 +1,12 @@
+
 /*
- Name        : piio.h - the header file with four IO controls
- Author      : Dr Abdul Razaq & Aaron Stones
- Version     : 0.1
- Copyright   : See Abertay copyright notice
- Description : RPi Zero Wireless - GPIO Driver - User space application must include this header file
- ============================================================================
+ *  chardev.h - the header file with the ioctl definitions.
+ *
+ *  The declarations here have to be in a header file, because
+ *  they need to be known both to the kernel module
+ *  (in chardev.c) and the process calling ioctl (ioctl.c)
  */
+
 #ifndef PIIO_H
 #define PIIO_H
 

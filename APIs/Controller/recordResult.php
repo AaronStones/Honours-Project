@@ -7,6 +7,7 @@
 
 include("../Model/Readings.php");
 
+
 $check = null;
 
 $email = $_POST["email"];
